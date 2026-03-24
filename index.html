@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miquel Matoses — Data Engineer & Analytics Engineer</title>
+  <meta name="description" content="Data Engineer and Analytics Engineer based in Copenhagen. dbt Certified. Snowflake architect. Modern data stack builder." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0d1117;
+      --bg2:       #161b22;
+      --bg3:       #1c2333;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --blue:      #58a6ff;
+      --coral:     #ff6b6b;
+      --amber:     #fbc145;
+      --green:     #3fb950;
+      --font:      'Inter', sans-serif;
+      --mono:      'Fira Code', monospace;
+      --radius:    12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ─── SCROLLBAR ────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+    /* ─── UTILITIES ────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 6rem 0; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: var(--mono);
+      background: rgba(88,166,255,0.1);
+      color: var(--blue);
+      border: 1px solid rgba(88,166,255,0.25);
+    }
+    .tag.coral { background: rgba(255,107,107,0.1); color: var(--coral); border-color: rgba(255,107,107,0.25); }
+    .tag.amber { background: rgba(251,193,69,0.1);  color: var(--amber); border-color: rgba(251,193,69,0.25); }
+    .tag.green { background: rgba(63,185,80,0.1);   color: var(--green); border-color: rgba(63,185,80,0.25); }
+
+    /* ─── FADE-IN ANIMATION (Intersection Observer) ────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+    .fade-up.delay-5 { transition-delay: 0.5s; }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), backdrop-filter var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(13,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .nav-logo span { color: var(--text); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--blue);
+      border-radius: 6px;
+      color: var(--blue) !important;
+      font-size: 0.85rem !important;
+      transition: background var(--transition) !important;
+    }
+    .nav-cta:hover { background: rgba(88,166,255,0.1) !important; }
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 61px; left: 0; right: 0;
+      background: rgba(13,17,23,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem;
+      flex-direction: column;
+      gap: 1.2rem;
+      z-index: 99;
+      backdrop-filter: blur(12px);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 1rem; color: var(--muted); font-weight: 500; }
+    .nav-mobile a:hover { color: var(--text); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(88,166,255,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(255,107,107,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 60% 20%, rgba(251,193,69,0.05) 0%, transparent 60%);
+      animation: gradientShift 12s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+    @keyframes gradientShift {
+      0%   { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 1;   transform: scale(1.05); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 7rem 0 4rem;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+    .hero-name {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+    .hero-name .accent { color: var(--blue); }
+    .hero-typing-wrap {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      min-height: 2.2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.6s forwards;
+    }
+    .hero-typing-text { color: var(--text); }
+    .hero-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--blue);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-desc {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.8s forwards;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1s forwards;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--blue);
+      color: #0d1117;
+      box-shadow: 0 4px 20px rgba(88,166,255,0.3);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 28px rgba(88,166,255,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(88,166,255,0.06); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      animation: bounce 2s ease-in-out infinite;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1.4s forwards, bounce 2s ease-in-out 2s infinite;
+    }
+    .hero-scroll svg { width: 20px; height: 20px; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ─── ABOUT ────────────────────────────────────────────────── */
+    .about { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; line-height: 1.8; }
+    .about-text p strong { color: var(--text); }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .terminal {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+    .terminal-bar {
+      background: var(--bg3);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-dot.red    { background: #ff5f57; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green  { background: #28ca41; }
+    .terminal-title { color: var(--muted); font-size: 0.78rem; margin-left: 0.5rem; }
+    .terminal-body { padding: 1.25rem 1.5rem; line-height: 2; }
+    .t-prompt { color: var(--green); }
+    .t-cmd    { color: var(--text); }
+    .t-key    { color: var(--blue); }
+    .t-val    { color: var(--amber); }
+    .t-comment{ color: var(--muted); }
+    .t-line   { display: block; }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ─── TECH STACK ───────────────────────────────────────────── */
+    .tech-group { margin-bottom: 2.5rem; }
+    .tech-group-label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .tech-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .tech-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      cursor: default;
+    }
+    .tech-card:hover { transform: translateY(-2px); }
+    .tech-card.blue  { border-left: 3px solid var(--blue);  }
+    .tech-card.coral { border-left: 3px solid var(--coral); }
+    .tech-card.amber { border-left: 3px solid var(--amber); }
+    .tech-card.blue:hover  { box-shadow: 0 4px 16px rgba(88,166,255,0.15);  border-color: var(--blue);  }
+    .tech-card.coral:hover { box-shadow: 0 4px 16px rgba(255,107,107,0.15); border-color: var(--coral); }
+    .tech-card.amber:hover { box-shadow: 0 4px 16px rgba(251,193,69,0.15);  border-color: var(--amber); }
+    .tech-icon { width: 20px; height: 20px; object-fit: contain; }
+    .tech-exploring {
+      background: var(--bg2);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .tech-exploring-label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--amber);
+    }
+
+    /* ─── EXPERIENCE ───────────────────────────────────────────── */
+    .experience { background: var(--bg2); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--coral), var(--amber));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0 0 3rem 2.5rem;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -2.1rem;
+      top: 0.3rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--bg2);
+      box-shadow: 0 0 0 2px currentColor;
+    }
+    .timeline-dot.blue  { background: var(--blue);  color: var(--blue);  }
+    .timeline-dot.coral { background: var(--coral); color: var(--coral); }
+    .timeline-dot.amber { background: var(--amber); color: var(--amber); }
+    .timeline-period {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-role {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .timeline-company .sep { color: var(--border); }
+    .timeline-bullets { padding-left: 1.1rem; }
+    .timeline-bullets li {
+      list-style: disc;
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 0.45rem;
+      line-height: 1.65;
+    }
+    .timeline-bullets li strong { color: var(--text); }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+
+    /* ─── CERTIFICATIONS ───────────────────────────────────────── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .cert-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .cert-card:hover { transform: translateY(-3px); }
+    .cert-card.blue:hover  { border-color: var(--blue);  box-shadow: 0 6px 24px rgba(88,166,255,0.12); }
+    .cert-card.coral:hover { border-color: var(--coral); box-shadow: 0 6px 24px rgba(255,107,107,0.12); }
+    .cert-card.amber:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(251,193,69,0.12); }
+    .cert-badge { margin-bottom: 1rem; }
+    .cert-badge img { height: 24px; }
+    .cert-name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .cert-issuer { font-size: 0.83rem; color: var(--muted); }
+    .cert-year {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+    }
+
+    /* ─── BOOK A CALL ──────────────────────────────────────────── */
+    .book {
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .book-inner { max-width: 640px; margin: 0 auto; }
+    .book-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .book-title .accent-coral { color: var(--coral); }
+    .book-subtitle { color: var(--muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.5rem; }
+    .book-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-coral {
+      background: var(--coral);
+      color: #0d1117;
+      box-shadow: 0 4px 20px rgba(255,107,107,0.3);
+      font-weight: 700;
+    }
+    .btn-coral:hover { box-shadow: 0 6px 28px rgba(255,107,107,0.5); }
+
+    /* ─── FOOTER ───────────────────────────────────────────────── */
+    .footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-left .footer-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .footer-left .footer-tagline {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      max-width: 380px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-link {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .footer-link:hover { color: var(--text); border-color: var(--blue); background: rgba(88,166,255,0.06); }
+    .footer-link svg { width: 16px; height: 16px; }
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-family: var(--mono);
+    }
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">mm<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tech">Stack</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certs">Certs</a></li>
+      
+      <li><a href="https://calendar.app.google/xvTn6c2ZT2RKSBir6" target="_blank" rel="noopener" class="nav-cta">Book a call</a></li>
+    </ul>
+    <div class="nav-burger" id="burger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#about"      onclick="closeMobile()">About</a>
+  <a href="#tech"       onclick="closeMobile()">Stack</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#certs"      onclick="closeMobile()">Certs</a>
+  
+  <a href="https://calendar.app.google/xvTn6c2ZT2RKSBir6" target="_blank" rel="noopener">Book a call ↗</a>
+</div>
+
+<!-- ═══════════════════════════ HERO ══════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero-canvas" id="particleCanvas"></canvas>
+  <div class="hero-gradient"></div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow">// Copenhagen, Denmark</p>
+    <h1 class="hero-name">Miquel<br/><span class="accent">Matoses</span></h1>
+    <div class="hero-typing-wrap">
+      <span class="hero-typing-text" id="typingText"></span><span class="hero-cursor"></span>
+    </div>
+    <p class="hero-desc">
+      Data Engineer and Analytics Engineer with 8+ years building modern data stacks.
+      dbt Certified. Snowflake architect. I turn messy legacy pipelines into clean, tested,
+      business-trusted data — and I ship.
+    </p>
+    <div class="hero-buttons">
+      <a href="#experience" class="btn btn-primary">View my work</a>
+      
+      <a href="https://calendar.app.google/xvTn6c2ZT2RKSBir6" target="_blank" rel="noopener" class="btn btn-outline">Book a 30-min call</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+    scroll
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ABOUT ═════════════════════════ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p class="section-label">// about</p>
+        <h2 class="section-title">The person<br/>behind the pipelines</h2>
+        <p>
+          Valencian by origin, Copenhagen by choice. I moved here in early 2026 with my wife and two kids
+          because <strong>living somewhere and not engaging with it has never felt right.</strong> Yes, I'm
+          learning Danish.
+        </p>
+        <p>
+          I've spent 8+ years building data systems — from co-founding an agri-food cooperative where I built
+          the <strong>entire data stack from zero</strong> (GIS pipelines, climate data, end-to-end traceability),
+          to refactoring 50+ legacy SQL scripts into clean, modular dbt models at a global travel company.
+        </p>
+        <p>
+          Outside of data: competitive <strong>debate captain</strong> (evidence-based, argument-first, zero
+          tolerance for vibes), piano and bass player, and occasional performer on the
+          <strong>dolçaina</strong> — a traditional Valencian wind instrument nobody outside Valencia has
+          heard of, but everyone should.
+        </p>
+        <p>
+          My Belbin profile is <strong>Implementer + Team Worker</strong>. I'm the person who unblocks the
+          team when everyone else is still debating what to do.
+        </p>
+        <div class="about-tags">
+          <span class="tag">dbt Certified</span>
+          <span class="tag coral">Snowflake</span>
+          <span class="tag amber">8+ years</span>
+          <span class="tag green">Open to work</span>
+        </div>
+      </div>
+      <div class="terminal fade-up delay-2">
+        <div class="terminal-bar">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title">miquel@macbook ~ zsh</span>
+        </div>
+        <div class="terminal-body">
+          <span class="t-line"><span class="t-prompt">~ ❯</span> <span class="t-cmd">whoami --verbose</span></span>
+          <span class="t-line">&nbsp;</span>
+          <span class="t-line"><span class="t-key">name</span>         <span class="t-val">"Miquel Matoses"</span></span>
+          <span class="t-line"><span class="t-key">role</span>         <span class="t-val">"Data / Analytics Engineer"</span></span>
+          <span class="t-line"><span class="t-key">location</span>     <span class="t-val">"Copenhagen, DK"</span></span>
+          <span class="t-line"><span class="t-key">experience</span>   <span class="t-val">8+</span> <span class="t-comment">// years</span></span>
+          <span class="t-line"><span class="t-key">certified</span>    <span class="t-val">["dbt", "Snowflake", "Airflow"]</span></span>
+          <span class="t-line"><span class="t-key">languages</span>    <span class="t-val">["SQL", "Python", "Danish*"]</span></span>
+          <span class="t-line"><span class="t-comment">             // *still learning</span></span>
+          <span class="t-line"><span class="t-key">industries</span>   <span class="t-val">["Travel","FMCG","Agri-food"]</span></span>
+          <span class="t-line"><span class="t-key">paellas</span>      <span class="t-val">200+</span> <span class="t-comment">// cooked for</span></span>
+          <span class="t-line"><span class="t-key">status</span>       <span class="t-val">"open to opportunities"</span></span>
+          <span class="t-line">&nbsp;</span>
+          <span class="t-line"><span class="t-prompt">~ ❯</span> <span class="t-cmd">_</span><span style="animation:blink 0.8s step-end infinite;display:inline-block;width:8px;height:1em;background:var(--green);vertical-align:middle"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TECH STACK ════════════════════ -->
+<section class="section" id="tech">
+  <div class="container">
+    <p class="section-label fade-up">// tech stack</p>
+    <h2 class="section-title fade-up">Tools I build with</h2>
+    <p class="section-subtitle fade-up">
+      The modern data stack is my natural habitat. Here's what I reach for.
+    </p>
+
+    <div class="tech-group fade-up">
+      <div class="tech-group-label">Core Data</div>
+      <div class="tech-cards">
+        <div class="tech-card blue">
+          <img class="tech-icon" src="https://img.shields.io/badge/-dbt-FF694B?style=flat&logo=dbt&logoColor=white" alt="dbt" style="height:20px;width:auto;border-radius:4px"/>
+          dbt Core &amp; Cloud
+        </div>
+        <div class="tech-card blue">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Snowflake-29B5E8?style=flat&logo=snowflake&logoColor=white" alt="Snowflake" style="height:20px;width:auto;border-radius:4px"/>
+          Snowflake
+        </div>
+        <div class="tech-card blue">
+          <img class="tech-icon" src="https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=postgresql&logoColor=white" alt="SQL" style="height:20px;width:auto;border-radius:4px"/>
+          SQL
+        </div>
+        <div class="tech-card blue">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" style="height:20px;width:auto;border-radius:4px"/>
+          Python
+        </div>
+        <div class="tech-card blue">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Airflow-017CEE?style=flat&logo=apacheairflow&logoColor=white" alt="Airflow" style="height:20px;width:auto;border-radius:4px"/>
+          Airflow / Astronomer
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-group fade-up delay-1">
+      <div class="tech-group-label">Cloud &amp; Infrastructure</div>
+      <div class="tech-cards">
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white" alt="Azure" style="height:20px;width:auto;border-radius:4px"/>
+          Azure
+        </div>
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Databricks-FF3621?style=flat&logo=databricks&logoColor=white" alt="Databricks" style="height:20px;width:auto;border-radius:4px"/>
+          Databricks
+        </div>
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions" style="height:20px;width:auto;border-radius:4px"/>
+          GitHub Actions
+        </div>
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white" alt="Git" style="height:20px;width:auto;border-radius:4px"/>
+          Git
+        </div>
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" style="height:20px;width:auto;border-radius:4px"/>
+          Docker
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-group fade-up delay-2">
+      <div class="tech-group-label">BI &amp; Reporting</div>
+      <div class="tech-cards">
+        <div class="tech-card amber">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Tableau-E97627?style=flat&logo=tableau&logoColor=white" alt="Tableau" style="height:20px;width:auto;border-radius:4px"/>
+          Tableau
+        </div>
+        <div class="tech-card amber">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black" alt="Power BI" style="height:20px;width:auto;border-radius:4px"/>
+          Power BI
+        </div>
+        <div class="tech-card amber">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Power%20Automate-0066FF?style=flat&logo=microsoftpowerautomate&logoColor=white" alt="Power Automate" style="height:20px;width:auto;border-radius:4px"/>
+          Power Automate
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-exploring fade-up delay-3">
+      <span class="tech-exploring-label">⚗ Currently exploring →</span>
+      <div class="tech-card amber" style="border:1px dashed rgba(251,193,69,0.4);background:transparent">
+        <img class="tech-icon" src="https://img.shields.io/badge/-Apache%20Iceberg-3E3E3E?style=flat&logo=apache&logoColor=white" alt="Apache Iceberg" style="height:20px;width:auto;border-radius:4px"/>
+        Apache Iceberg
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ EXPERIENCE ════════════════════ -->
+<section class="section experience" id="experience">
+  <div class="container">
+    <p class="section-label fade-up">// experience</p>
+    <h2 class="section-title fade-up">Where I've built things</h2>
+    <p class="section-subtitle fade-up">
+      4+ years in production data stacks across Travel, FMCG, and Agri-food.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot blue"></div>
+        <div class="timeline-period">Oct 2024 – Jan 2026</div>
+        <div class="timeline-role">Data Engineer</div>
+        <div class="timeline-company">
+          HBX Group <span class="sep">·</span> Travel Technology
+        </div>
+        <ul class="timeline-bullets">
+          <li>Refactored <strong>50+ legacy SQL scripts and VBA macros</strong> into modular, tested dbt models on Snowflake — from spaghetti to semantic layer.</li>
+          <li>Achieved <strong>99.9% reliability</strong> on business-critical reporting pipelines; on-call incidents dropped to near zero.</li>
+          <li>Automated daily reporting workflows using <strong>Snowflake Tasks + Power Automate</strong>, eliminating hours of manual work per week.</li>
+          <li>Implemented CI/CD for dbt models via <strong>GitHub Actions</strong> — tests gate every merge to production.</li>
+        </ul>
+        <div class="timeline-tags">
+          <span class="tag">dbt</span>
+          <span class="tag">Snowflake</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag coral">Power Automate</span>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up delay-1">
+        <div class="timeline-dot coral"></div>
+        <div class="timeline-period">Sep 2023 – Oct 2024</div>
+        <div class="timeline-role">Data Engineer (Contract)</div>
+        <div class="timeline-company">
+          Huxley / Bacardi-Martini <span class="sep">·</span> FMCG
+        </div>
+        <ul class="timeline-bullets">
+          <li>Led a team of <strong>data stewards</strong> to improve master data quality across product, supplier, and customer domains feeding ML pipelines.</li>
+          <li>Built ELT pipelines in <strong>Azure Databricks + Python</strong> for downstream analytics and data governance workflows.</li>
+          <li>Contributed to a <strong>Profisee-based data governance</strong> application — data quality rules, workflow automation, and integration with Azure Data Factory.</li>
+        </ul>
+        <div class="timeline-tags">
+          <span class="tag coral">Azure Databricks</span>
+          <span class="tag coral">Python</span>
+          <span class="tag">Profisee</span>
+          <span class="tag">Data Governance</span>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up delay-2">
+        <div class="timeline-dot amber"></div>
+        <div class="timeline-period">Jan 2018 – Sep 2023</div>
+        <div class="timeline-role">Co-founder &amp; CEO</div>
+        <div class="timeline-company">
+          Cèrcol Coop <span class="sep">·</span> Agri-food
+        </div>
+        <ul class="timeline-bullets">
+          <li>Built the <strong>entire data stack from zero</strong> — no prior infrastructure, no budget, full ownership.</li>
+          <li>Engineered <strong>GIS + climate data pipelines</strong> for precision agriculture and environmental reporting.</li>
+          <li>Designed an <strong>end-to-end traceability system</strong> across the supply chain — from field to fork.</li>
+          <li>Scaled the cooperative to <strong>15 employees</strong> and sustained operations for 5+ years.</li>
+        </ul>
+        <div class="timeline-tags">
+          <span class="tag amber">Python</span>
+          <span class="tag amber">GIS</span>
+          <span class="tag amber">SQL</span>
+          <span class="tag">Entrepreneurship</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CERTIFICATIONS ════════════════ -->
+<section class="section" id="certs">
+  <div class="container">
+    <p class="section-label fade-up">// certifications</p>
+    <h2 class="section-title fade-up">Credentials</h2>
+    <p class="section-subtitle fade-up">
+      Verified. Not just read the docs.
+    </p>
+    <div class="certs-grid">
+
+      <div class="cert-card blue fade-up delay-1">
+        <div class="cert-badge">
+          <img src="https://img.shields.io/badge/dbt-Analytics%20Engineering-FF694B?style=for-the-badge&logo=dbt&logoColor=white" alt="dbt Certified" />
+        </div>
+        <div class="cert-name">Analytics Engineering Certification</div>
+        <div class="cert-issuer">dbt Labs</div>
+        <span class="tag cert-year">2026</span>
+      </div>
+
+      <div class="cert-card blue fade-up delay-2">
+        <div class="cert-badge">
+          <img src="https://img.shields.io/badge/Snowflake-Core%20%2B%20AI%20%2B%20DWH-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white" alt="Snowflake Badges" />
+        </div>
+        <div class="cert-name">Fundamentals · AI · Data Warehousing</div>
+        <div class="cert-issuer">Snowflake</div>
+        <span class="tag cert-year">2024–2026</span>
+      </div>
+
+      <div class="cert-card coral fade-up delay-3">
+        <div class="cert-badge">
+          <img src="https://img.shields.io/badge/DataCamp-Data%20Engineer%20Associate-03EF62?style=for-the-badge&logo=datacamp&logoColor=black" alt="DataCamp" />
+        </div>
+        <div class="cert-name">Data Engineer Associate</div>
+        <div class="cert-issuer">DataCamp · Snowflake track</div>
+        <span class="tag coral cert-year">2024</span>
+      </div>
+
+      <div class="cert-card amber fade-up delay-4">
+        <div class="cert-badge">
+          <img src="https://img.shields.io/badge/Astronomer-Airflow%20101-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white" alt="Astronomer" />
+        </div>
+        <div class="cert-name">Airflow 101 Certification</div>
+        <div class="cert-issuer">Astronomer</div>
+        <span class="tag amber cert-year">2024</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BOOK A CALL ═══════════════════ -->
+<section class="section book" id="book">
+  <div class="container">
+    <div class="book-inner">
+      <div class="fade-up">
+        <p class="section-label" style="text-align:center">// let's connect</p>
+        <h2 class="book-title">Let's talk <span class="accent-coral">data</span></h2>
+        <p class="book-subtitle">
+          30-minute intro call — no pitch, just a conversation about your data challenges.
+          If I can help, I'll tell you. If I can't, I'll tell you that too.
+        </p>
+        <div class="book-buttons">
+          
+          <a href="https://calendar.app.google/xvTn6c2ZT2RKSBir6" target="_blank" rel="noopener" class="btn btn-coral">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+            Book a free 30-min call
+          </a>
+          <a href="mailto:miquelmatoses@gmail.com" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            miquelmatoses@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Miquel Matoses</div>
+        <div class="footer-tagline">"I don't wait for the perfect moment. I take the ring to Mordor."</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/miquelmatoses" target="_blank" rel="noopener" class="footer-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/miquelmatoses" target="_blank" rel="noopener" class="footer-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="mailto:miquelmatoses@gmail.com" class="footer-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Built with vanilla HTML, CSS &amp; JS · No frameworks harmed in the making of this site
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ JS ════════════════════════════ -->
+<script>
+  // ── Particle canvas ──────────────────────────────────────────
+  (function () {
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], animId;
+
+    const COLORS = ['rgba(88,166,255,', 'rgba(255,107,107,', 'rgba(251,193,69,'];
+    const COUNT = 55;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    function Particle() {
+      this.reset = function() {
+        this.x  = Math.random() * W;
+        this.y  = Math.random() * H;
+        this.r  = Math.random() * 1.5 + 0.4;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.alpha = Math.random() * 0.4 + 0.1;
+        this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      };
+      this.reset();
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + p.alpha + ')';
+        ctx.fill();
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < -10 || p.x > W + 10 || p.y < -10 || p.y > H + 10) p.reset();
+      });
+      // draw subtle connecting lines
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(88,166,255,' + (0.05 * (1 - dist / 120)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      animId = requestAnimationFrame(draw);
+    }
+
+    resize();
+    init();
+    draw();
+    window.addEventListener('resize', () => { resize(); init(); });
+  })();
+
+  // ── Typing animation ──────────────────────────────────────────
+  (function () {
+    const phrases = [
+      'Data Engineer',
+      'Analytics Engineer',
+      'dbt Certified ✓',
+      'Modern Data Stack Builder',
+      'Taking the ring to Mordor'
+    ];
+    const el = document.getElementById('typingText');
+    let pIdx = 0, cIdx = 0, deleting = false, wait = 0;
+
+    function tick() {
+      const phrase = phrases[pIdx];
+      if (deleting) {
+        cIdx--;
+        el.textContent = phrase.slice(0, cIdx);
+        if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; wait = 400; }
+      } else {
+        cIdx++;
+        el.textContent = phrase.slice(0, cIdx);
+        if (cIdx === phrase.length) { deleting = true; wait = 1800; }
+      }
+      const speed = deleting ? 40 : 75;
+      setTimeout(tick, wait || speed);
+      wait = 0;
+    }
+    setTimeout(tick, 600);
+  })();
+
+  // ── Scroll → nav background ──────────────────────────────────
+  (function () {
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+  })();
+
+  // ── Mobile menu ───────────────────────────────────────────────
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('nav-mobile');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+  burger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') burger.click(); });
+
+  // ── Intersection Observer fade-up ─────────────────────────────
+  (function () {
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  })();
+</script>
+</body>
+</html>
