@@ -393,6 +393,8 @@
     .tech-card.blue:hover  { box-shadow: 0 4px 16px rgba(88,166,255,0.15);  border-color: var(--blue);  }
     .tech-card.coral:hover { box-shadow: 0 4px 16px rgba(255,107,107,0.15); border-color: var(--coral); }
     .tech-card.amber:hover { box-shadow: 0 4px 16px rgba(251,193,69,0.15);  border-color: var(--amber); }
+    .tech-card.green { border-left: 3px solid var(--green); }
+    .tech-card.green:hover { box-shadow: 0 4px 16px rgba(63,185,80,0.15); border-color: var(--green); }
     .tech-icon { width: 20px; height: 20px; object-fit: contain; }
     .tech-exploring {
       background: var(--bg2);
@@ -469,6 +471,152 @@
     }
     .timeline-bullets li strong { color: var(--text); }
     .timeline-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+
+    /* ─── PROJECTS ─────────────────────────────────────────────── */
+    .projects { background: var(--bg2); }
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green);
+      box-shadow: 0 8px 32px rgba(63,185,80,0.12);
+    }
+    .project-card-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .project-visual {
+      background: linear-gradient(135deg, #0f1a12 0%, #162416 50%, #0d1117 100%);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(63,185,80,0.08) 0%, transparent 60%);
+    }
+    .project-logo-svg {
+      width: 180px;
+      height: auto;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+    .project-moon-phases {
+      display: flex;
+      gap: 1rem;
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 1;
+    }
+    .project-moon-phase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .project-moon-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .project-body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .project-type {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .project-name {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .project-tagline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .project-highlights {
+      padding-left: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-highlights li {
+      list-style: disc;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+    .project-highlights li strong { color: var(--text); }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .project-link:hover {
+      color: var(--green);
+      border-color: var(--green);
+      background: rgba(63,185,80,0.06);
+    }
+    .project-link svg { width: 14px; height: 14px; }
+    .project-link.primary {
+      background: var(--green);
+      color: #0d1117;
+      border-color: var(--green);
+    }
+    .project-link.primary:hover {
+      background: #4cc964;
+      box-shadow: 0 4px 16px rgba(63,185,80,0.3);
+    }
+    @media (max-width: 900px) {
+      .project-card-inner { grid-template-columns: 1fr; }
+      .project-visual { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+      .project-body { padding: 1.5rem; }
+    }
 
     /* ─── CERTIFICATIONS ───────────────────────────────────────── */
     .certs-grid {
@@ -591,8 +739,9 @@
       <li><a href="#about">About</a></li>
       <li><a href="#tech">Stack</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#certs">Certs</a></li>
-      
+
       <li><a href="https://calendar.app.google/xvTn6c2ZT2RKSBir6" target="_blank" rel="noopener" class="nav-cta">Book a call</a></li>
     </ul>
     <div class="nav-burger" id="burger" aria-label="Menu" role="button" tabindex="0">
@@ -604,8 +753,9 @@
   <a href="#about"      onclick="closeMobile()">About</a>
   <a href="#tech"       onclick="closeMobile()">Stack</a>
   <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#projects"   onclick="closeMobile()">Projects</a>
   <a href="#certs"      onclick="closeMobile()">Certs</a>
-  
+
   <a href="https://calendar.app.google/xvTn6c2ZT2RKSBir6" target="_blank" rel="noopener">Book a call ↗</a>
 </div>
 
@@ -779,7 +929,33 @@
       </div>
     </div>
 
-    <div class="tech-exploring fade-up delay-3">
+    <div class="tech-group fade-up delay-3">
+      <div class="tech-group-label">Frontend &amp; Fullstack</div>
+      <div class="tech-cards">
+        <div class="tech-card green">
+          <img class="tech-icon" src="https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black" alt="React" style="height:20px;width:auto;border-radius:4px"/>
+          React
+        </div>
+        <div class="tech-card green">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite" style="height:20px;width:auto;border-radius:4px"/>
+          Vite
+        </div>
+        <div class="tech-card green">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" style="height:20px;width:auto;border-radius:4px"/>
+          Tailwind CSS
+        </div>
+        <div class="tech-card green">
+          <img class="tech-icon" src="https://img.shields.io/badge/-FastAPI-009688?style=flat&logo=fastapi&logoColor=white" alt="FastAPI" style="height:20px;width:auto;border-radius:4px"/>
+          FastAPI
+        </div>
+        <div class="tech-card green">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Supabase-3FCF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase" style="height:20px;width:auto;border-radius:4px"/>
+          Supabase
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-exploring fade-up delay-4">
       <span class="tech-exploring-label">⚗ Currently exploring →</span>
       <div class="tech-card amber" style="border:1px dashed rgba(251,193,69,0.4);background:transparent">
         <img class="tech-icon" src="https://img.shields.io/badge/-Apache%20Iceberg-3E3E3E?style=flat&logo=apache&logoColor=white" alt="Apache Iceberg" style="height:20px;width:auto;border-radius:4px"/>
@@ -863,6 +1039,101 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ PROJECTS ══════════════════════ -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <p class="section-label fade-up">// projects</p>
+    <h2 class="section-title fade-up">What I'm building</h2>
+    <p class="section-subtitle fade-up">
+      Side projects where I go beyond the day job and build end-to-end.
+    </p>
+
+    <div class="project-card fade-up delay-1">
+      <div class="project-card-inner">
+        <div class="project-visual">
+          <svg class="project-logo-svg" viewBox="0 0 1122.52 470.92" fill="currentColor" aria-label="Cèrcol logo">
+            <path d="m 3969.73,2230.29 c -93.36,-159.94 -143.58,-333.14 -53.28,-385.84 90.29,-52.7 208.72,63.02 302.08,222.96 104.65,179.29 131.96,339.92 53.28,385.85 -78.68,45.92 -197.43,-43.68 -302.08,-222.97" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 1212.64,2357.4 c -180.39,-41.94 -340.788,-124.34 -317.113,-226.18 23.676,-101.83 189.123,-108.48 369.503,-66.54 202.21,47.01 337.74,137.44 317.12,226.17 -20.64,88.74 -167.31,113.55 -369.51,66.55" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 5418.53,2357.4 c -180.39,-41.94 -340.79,-124.34 -317.11,-226.18 23.67,-101.83 189.12,-108.48 369.5,-66.54 202.21,47.01 337.74,137.44 317.12,226.17 -20.64,88.74 -167.31,113.55 -369.51,66.55" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 2193.43,1922.67 c 0,208.28 11.85,456.79 149.1,456.79 101.78,0 123.09,-111.22 123.09,-274.54 v -139.63 l -272.19,-52.09 z m 648.52,-369.23 c -71.01,-56.8 -203.57,-104.14 -328.99,-104.14 -170.43,0 -305.34,115.97 -319.53,418.93 h 631.95 v 134.91 c 0,298.24 -177.51,452.07 -471,452.07 -220.2,0 -400.26,-126.29 -499.25,-312.28 -53.16,-99.88 -83,-216.93 -83,-340.97 0,-7.44 0.22,-14.78 0.4,-22.14 8.24,-338.94 205.86,-586.14 548.72,-586.14 300.59,0 442.6,201.18 530.18,352.66 l -9.48,7.1" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 3697.19,1541.6 v 913.61 h -9.48 c -168.05,-42.59 -366.87,-87.57 -572.79,-106.5 v -9.48 c 130.19,-61.52 153.84,-113.61 153.84,-321.89 V 1541.6 c 0,-170.41 -14.18,-246.14 -130.15,-312.42 v -9.47 h 726.62 v 9.47 c -151.49,71 -168.04,142.01 -168.04,312.42" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 6595.9,1272.21 c -165.69,0 -189.36,265.08 -189.36,558.57 0,328.99 44.98,558.58 189.36,558.58 144.37,0 189.35,-229.59 189.35,-558.58 0,-293.49 -23.67,-558.57 -189.35,-558.57 z m 0,1190.52 c -207.75,0 -393.82,-85.75 -510.89,-236.5 -80.33,-103.44 -128.16,-237.48 -128.16,-395.45 0,-38.12 3.13,-75.07 8.85,-110.82 49.35,-308.2 303.58,-521.14 630.2,-521.14 364.48,0 639.05,265.1 639.05,631.96 0,388.15 -288.76,631.95 -639.05,631.95" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 8059.75,1541.6 v 1382.26 h -9.46 c -168.05,-42.62 -376.33,-87.58 -582.25,-106.52 v -9.47 c 130.19,-61.54 153.84,-113.6 153.84,-321.89 V 1541.6 c 0,-170.41 -14.18,-246.14 -130.17,-312.42 v -9.47 h 698.23 v 9.47 c -115.98,66.28 -130.19,142.01 -130.19,312.42" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 1415.87,1553.44 -6.6,3.55 c -63.84,-27.17 -133.98,-42.39 -207.75,-42.39 -293.391,0 -531.231,263.79 -531.231,557.19 0,139.21 53.613,265.85 141.234,360.58 2.754,4.45 5.711,8.77 8.582,13.15 l -10.449,7.52 -2.914,1.56 c -34.043,-3.3 -68.262,-9.31 -102.371,-18.56 -328.73,-89.1 -522.976,-453.75 -433.883,-782.47 89.106,-328.71 427.805,-522.96 756.522,-433.86 180.45,48.92 319.51,173.44 394.23,329.87 l -5.37,3.86" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 5600.71,1553.44 -1.82,0.98 c -62.26,-25.63 -130.42,-39.82 -201.92,-39.82 -293.4,0 -531.24,263.79 -531.24,557.19 0,139.21 53.61,265.85 141.24,360.58 3.19,5.16 6.6,10.18 9.95,15.24 l -7.54,5.43 -3.52,1.89 c -35.25,-3.21 -70.71,-9.31 -106.06,-18.89 -328.72,-89.1 -522.96,-453.75 -433.86,-782.47 89.1,-328.71 427.8,-522.96 756.52,-433.86 178.26,48.32 316.17,170.42 391.51,324.19 l -13.26,9.54" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 2264.79,2975.04 c -38.87,-97.06 -217.56,-72.84 -389.49,-4 -192.72,77.17 -298.8,181.46 -264.93,266.04 33.86,84.57 196.76,81.16 389.48,3.99 171.93,-68.84 303.79,-168.98 264.94,-266.03" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+            <path d="m 4310.4,312.941 c -38.87,-97.062 -217.56,-72.839 -389.49,-4 -192.72,77.168 -298.8,181.457 -264.94,266.039 33.87,84.571 196.77,81.161 389.49,3.989 171.93,-68.84 303.79,-168.981 264.94,-266.028" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
+          </svg>
+          <div class="project-moon-phases">
+            <div class="project-moon-phase">
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path stroke-width="1.8" d="M16 4.5 C22.5 4 28.5 9.5 28 16 C27.5 22.5 22 28 16 27.5 C9.5 28 3.5 22 4 16 C4.5 9.5 9.5 4 16 4.5 Z"/>
+                <line stroke-width="1.3" x1="4.2" y1="15.8" x2="16.2" y2="3.8"/>
+                <line stroke-width="1.3" x1="5.1" y1="20.9" x2="20.9" y2="5.1"/>
+                <line stroke-width="1.3" x1="7.5" y1="24.5" x2="24.5" y2="7.5"/>
+                <line stroke-width="1.3" x1="11.1" y1="26.9" x2="26.9" y2="11.1"/>
+                <line stroke-width="1.3" x1="15.8" y1="27.8" x2="27.8" y2="15.8"/>
+              </svg>
+              <span class="project-moon-label">New</span>
+            </div>
+            <div class="project-moon-phase">
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path stroke-width="1.8" d="M16 4.5 C22.5 4 28.5 9.5 28 16.5 C27.5 23 21.5 28 16 27.5 C14.5 21.5 14 10.5 16 4.5 Z"/>
+              </svg>
+              <span class="project-moon-label">Quarter</span>
+            </div>
+            <div class="project-moon-phase">
+              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path stroke-width="1.8" d="M16 4.5 C22.5 4 28 9.5 27.5 16 C27 22.5 22.5 28 16 27.5 C9.5 28 4 22 4.5 16 C5 9.5 9.5 4 16 4.5 Z"/>
+                <path stroke-width="1.2" d="M10 13.5 C10 12.2 13 12.2 13 13.5 C13 14.8 10 14.8 10 13.5 Z"/>
+                <path stroke-width="1.2" d="M19.5 20.5 C19.5 19.5 21.5 19.5 21.5 20.5 C21.5 21.5 19.5 21.5 19.5 20.5 Z"/>
+                <path stroke-width="1" d="M18.5 9.5 C18.5 8.8 20 8.8 20 9.5 C20 10.2 18.5 10.2 18.5 9.5 Z"/>
+              </svg>
+              <span class="project-moon-label">Full</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Open-source · Personality Assessment</div>
+          <h3 class="project-name">cercol.team</h3>
+          <p class="project-tagline">
+            Psychometric assessment platform grounded in peer-reviewed science (IPIP).
+            Three instruments — from a 2-minute snapshot to a 120-item deep profile —
+            with a 12-role team system built on the AB5C circumplex model.
+          </p>
+          <ul class="project-highlights">
+            <li>Built <strong>full-stack from zero</strong> — React 19 + Vite frontend, FastAPI backend, Supabase auth &amp; database</li>
+            <li><strong>Three assessment tiers</strong> (New Moon, First Quarter, Full Moon) measuring Big Five personality dimensions</li>
+            <li><strong>12 animal-based team roles</strong> derived from Euclidean distance in 5D personality space + softmax scoring</li>
+            <li>Bilingual UI <strong>(English + Catalan)</strong> with react-i18next, Stripe payments, and GitHub Pages deployment</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag green">React</span>
+            <span class="tag green">Vite</span>
+            <span class="tag green">Tailwind CSS</span>
+            <span class="tag green">FastAPI</span>
+            <span class="tag green">Supabase</span>
+            <span class="tag">Python</span>
+            <span class="tag">Stripe</span>
+            <span class="tag">i18n</span>
+          </div>
+          <div class="project-links">
+            <a href="https://cercol.team" target="_blank" rel="noopener" class="project-link primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live site
+            </a>
+            <a href="https://github.com/miquelmatoses/cercol" target="_blank" rel="noopener" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Source code
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
