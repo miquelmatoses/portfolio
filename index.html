@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Miquel Matoses — Data Engineer & Analytics Engineer</title>
   <meta name="description" content="Data Engineer and Analytics Engineer based in Copenhagen. dbt Certified. Snowflake architect. Modern data stack builder." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%2358a6ff' text-anchor='middle'>mm</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%230047ba' text-anchor='middle'>mm</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <style>
     /* ─── RESET & BASE ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,12 +19,12 @@
       --border:    #30363d;
       --text:      #e6edf3;
       --muted:     #8b949e;
-      --blue:      #58a6ff;
-      --coral:     #ff6b6b;
-      --amber:     #fbc145;
-      --green:     #3fb950;
-      --font:      'Inter', sans-serif;
-      --mono:      'Fira Code', monospace;
+      --blue:      #0047ba;
+      --coral:     #cf3339;
+      --amber:     #f1c22f;
+      --green:     #427c42;
+      --font:      "Roboto", system-ui, sans-serif;
+      --mono:      "JetBrains Mono", monospace;
       --radius:    12px;
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -58,8 +58,9 @@
       margin-bottom: 0.6rem;
     }
     .section-title {
+      font-family: "Playfair Display", Georgia, serif;
       font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.2;
       margin-bottom: 1rem;
     }
@@ -75,13 +76,13 @@
       font-size: 0.78rem;
       font-weight: 600;
       font-family: var(--mono);
-      background: rgba(88,166,255,0.1);
+      background: rgba(0,71,186,0.1);
       color: var(--blue);
-      border: 1px solid rgba(88,166,255,0.25);
+      border: 1px solid rgba(0,71,186,0.25);
     }
-    .tag.coral { background: rgba(255,107,107,0.1); color: var(--coral); border-color: rgba(255,107,107,0.25); }
-    .tag.amber { background: rgba(251,193,69,0.1);  color: var(--amber); border-color: rgba(251,193,69,0.25); }
-    .tag.green { background: rgba(63,185,80,0.1);   color: var(--green); border-color: rgba(63,185,80,0.25); }
+    .tag.coral { background: rgba(207,51,57,0.1); color: var(--coral); border-color: rgba(207,51,57,0.25); }
+    .tag.amber { background: rgba(241,194,47,0.1);  color: var(--amber); border-color: rgba(241,194,47,0.25); }
+    .tag.green { background: rgba(66,124,66,0.1);   color: var(--green); border-color: rgba(66,124,66,0.25); }
 
     /* ─── FADE-IN ANIMATION (Intersection Observer) ────────────── */
     .fade-up {
@@ -144,7 +145,7 @@
       font-size: 0.85rem !important;
       transition: background var(--transition) !important;
     }
-    .nav-cta:hover { background: rgba(88,166,255,0.1) !important; }
+    .nav-cta:hover { background: rgba(0,71,186,0.1) !important; }
     .nav-burger {
       display: none;
       flex-direction: column;
@@ -200,9 +201,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(88,166,255,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(255,107,107,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 60% 20%, rgba(251,193,69,0.05) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(0,71,186,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(207,51,57,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 60% 20%, rgba(241,194,47,0.05) 0%, transparent 60%);
       animation: gradientShift 12s ease-in-out infinite alternate;
       z-index: 1;
     }
@@ -225,8 +226,9 @@
       animation: fadeUp 0.6s ease 0.2s forwards;
     }
     .hero-name {
+      font-family: "Playfair Display", Georgia, serif;
       font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.05;
       letter-spacing: -0.02em;
       margin-bottom: 1.2rem;
@@ -286,15 +288,15 @@
     .btn-primary {
       background: var(--blue);
       color: #0d1117;
-      box-shadow: 0 4px 20px rgba(88,166,255,0.3);
+      box-shadow: 0 4px 20px rgba(0,71,186,0.3);
     }
-    .btn-primary:hover { box-shadow: 0 6px 28px rgba(88,166,255,0.5); }
+    .btn-primary:hover { box-shadow: 0 6px 28px rgba(0,71,186,0.5); }
     .btn-outline {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
     }
-    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(88,166,255,0.06); }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,71,186,0.06); }
     .hero-scroll {
       position: absolute;
       bottom: 2rem;
@@ -403,11 +405,11 @@
     .tech-card.blue  { border-left: 3px solid var(--blue);  }
     .tech-card.coral { border-left: 3px solid var(--coral); }
     .tech-card.amber { border-left: 3px solid var(--amber); }
-    .tech-card.blue:hover  { box-shadow: 0 4px 16px rgba(88,166,255,0.15);  border-color: var(--blue);  }
-    .tech-card.coral:hover { box-shadow: 0 4px 16px rgba(255,107,107,0.15); border-color: var(--coral); }
-    .tech-card.amber:hover { box-shadow: 0 4px 16px rgba(251,193,69,0.15);  border-color: var(--amber); }
+    .tech-card.blue:hover  { box-shadow: 0 4px 16px rgba(0,71,186,0.15);  border-color: var(--blue);  }
+    .tech-card.coral:hover { box-shadow: 0 4px 16px rgba(207,51,57,0.15); border-color: var(--coral); }
+    .tech-card.amber:hover { box-shadow: 0 4px 16px rgba(241,194,47,0.15);  border-color: var(--amber); }
     .tech-card.green { border-left: 3px solid var(--green); }
-    .tech-card.green:hover { box-shadow: 0 4px 16px rgba(63,185,80,0.15); border-color: var(--green); }
+    .tech-card.green:hover { box-shadow: 0 4px 16px rgba(66,124,66,0.15); border-color: var(--green); }
     .tech-icon { width: 20px; height: 20px; object-fit: contain; }
     .tech-exploring {
       background: var(--bg2);
@@ -502,15 +504,15 @@
     .project-card:hover {
       transform: translateY(-4px);
       border-color: var(--green);
-      box-shadow: 0 8px 32px rgba(63,185,80,0.12);
+      box-shadow: 0 8px 32px rgba(66,124,66,0.12);
     }
     .project-card.amber:hover {
       border-color: var(--amber);
-      box-shadow: 0 8px 32px rgba(251,193,69,0.12);
+      box-shadow: 0 8px 32px rgba(241,194,47,0.12);
     }
     .project-card.coral:hover {
       border-color: var(--coral);
-      box-shadow: 0 8px 32px rgba(255,107,107,0.12);
+      box-shadow: 0 8px 32px rgba(207,51,57,0.12);
     }
     .project-visual {
       background: linear-gradient(135deg, #0f1a12 0%, #162416 50%, #0d1117 100%);
@@ -528,19 +530,19 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(63,185,80,0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at 30% 50%, rgba(66,124,66,0.08) 0%, transparent 60%);
     }
     .project-visual.amber {
       background: linear-gradient(135deg, #1a1508 0%, #24200d 50%, #0d1117 100%);
     }
     .project-visual.amber::before {
-      background: radial-gradient(circle at 30% 50%, rgba(251,193,69,0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at 30% 50%, rgba(241,194,47,0.08) 0%, transparent 60%);
     }
     .project-visual.coral {
       background: linear-gradient(135deg, #1a0f0f 0%, #241414 50%, #0d1117 100%);
     }
     .project-visual.coral::before {
-      background: radial-gradient(circle at 30% 50%, rgba(255,107,107,0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at 30% 50%, rgba(207,51,57,0.08) 0%, transparent 60%);
     }
     .project-logo-svg {
       width: 160px;
@@ -669,7 +671,7 @@
     .project-link:hover {
       color: var(--green);
       border-color: var(--green);
-      background: rgba(63,185,80,0.06);
+      background: rgba(66,124,66,0.06);
     }
     .project-link svg { width: 14px; height: 14px; }
     .project-link.primary {
@@ -679,12 +681,12 @@
     }
     .project-link.primary:hover {
       background: #4cc964;
-      box-shadow: 0 4px 16px rgba(63,185,80,0.3);
+      box-shadow: 0 4px 16px rgba(66,124,66,0.3);
     }
     .project-link.coral:hover {
       color: var(--coral);
       border-color: var(--coral);
-      background: rgba(255,107,107,0.06);
+      background: rgba(207,51,57,0.06);
     }
     .project-link.primary.coral {
       background: var(--coral);
@@ -693,12 +695,12 @@
     }
     .project-link.primary.coral:hover {
       background: #ff8585;
-      box-shadow: 0 4px 16px rgba(255,107,107,0.3);
+      box-shadow: 0 4px 16px rgba(207,51,57,0.3);
     }
     .project-link.amber:hover {
       color: var(--amber);
       border-color: var(--amber);
-      background: rgba(251,193,69,0.06);
+      background: rgba(241,194,47,0.06);
     }
     .project-link.primary.amber {
       background: var(--amber);
@@ -707,7 +709,7 @@
     }
     .project-link.primary.amber:hover {
       background: #fcc94d;
-      box-shadow: 0 4px 16px rgba(251,193,69,0.3);
+      box-shadow: 0 4px 16px rgba(241,194,47,0.3);
     }
     @media (max-width: 900px) {
       .projects-grid { grid-template-columns: 1fr; }
@@ -727,9 +729,9 @@
       transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
     }
     .cert-card:hover { transform: translateY(-3px); }
-    .cert-card.blue:hover  { border-color: var(--blue);  box-shadow: 0 6px 24px rgba(88,166,255,0.12); }
-    .cert-card.coral:hover { border-color: var(--coral); box-shadow: 0 6px 24px rgba(255,107,107,0.12); }
-    .cert-card.amber:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(251,193,69,0.12); }
+    .cert-card.blue:hover  { border-color: var(--blue);  box-shadow: 0 6px 24px rgba(0,71,186,0.12); }
+    .cert-card.coral:hover { border-color: var(--coral); box-shadow: 0 6px 24px rgba(207,51,57,0.12); }
+    .cert-card.amber:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(241,194,47,0.12); }
     .cert-badge { margin-bottom: 1rem; }
     .cert-badge img { height: 24px; }
     .cert-name {
@@ -764,10 +766,10 @@
     .btn-coral {
       background: var(--coral);
       color: #0d1117;
-      box-shadow: 0 4px 20px rgba(255,107,107,0.3);
+      box-shadow: 0 4px 20px rgba(207,51,57,0.3);
       font-weight: 700;
     }
-    .btn-coral:hover { box-shadow: 0 6px 28px rgba(255,107,107,0.5); }
+    .btn-coral:hover { box-shadow: 0 6px 28px rgba(207,51,57,0.5); }
 
     /* ─── FOOTER ───────────────────────────────────────────────── */
     .footer {
@@ -807,7 +809,7 @@
       color: var(--muted);
       transition: color var(--transition), border-color var(--transition), background var(--transition);
     }
-    .footer-link:hover { color: var(--text); border-color: var(--blue); background: rgba(88,166,255,0.06); }
+    .footer-link:hover { color: var(--text); border-color: var(--blue); background: rgba(0,71,186,0.06); }
     .footer-link svg { width: 16px; height: 16px; }
     .footer-bottom {
       margin-top: 2rem;
@@ -959,35 +961,35 @@
       <div class="tech-group-label">Core Data</div>
       <div class="tech-cards">
         <div class="tech-card blue">
-          <img class="tech-icon" src="https://img.shields.io/badge/-dbt-FF694B?style=flat&logo=dbt&logoColor=white" alt="dbt" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-dbt-cf3339?style=flat&logo=dbt&logoColor=white" alt="dbt" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">dbt Core &amp; Cloud</span>
             <div class="tech-subs"><span class="tech-sub">Jinja macros</span><span class="tech-sub">testing</span><span class="tech-sub">CI/CD</span><span class="tech-sub">Cloud jobs</span></div>
           </div>
         </div>
         <div class="tech-card blue">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Snowflake-29B5E8?style=flat&logo=snowflake&logoColor=white" alt="Snowflake" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Snowflake-0047ba?style=flat&logo=snowflake&logoColor=white" alt="Snowflake" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Snowflake</span>
             <div class="tech-subs"><span class="tech-sub">Tasks</span><span class="tech-sub">Streams</span><span class="tech-sub">Stored Procs</span></div>
           </div>
         </div>
         <div class="tech-card blue">
-          <img class="tech-icon" src="https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=postgresql&logoColor=white" alt="SQL" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-SQL-0047ba?style=flat&logo=postgresql&logoColor=white" alt="SQL" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">SQL</span>
             <div class="tech-subs"><span class="tech-sub">PostgreSQL</span><span class="tech-sub">Snowflake SQL</span></div>
           </div>
         </div>
         <div class="tech-card blue">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Python-0047ba?style=flat&logo=python&logoColor=white" alt="Python" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Python</span>
             <div class="tech-subs"><span class="tech-sub">FastAPI</span><span class="tech-sub">Django</span><span class="tech-sub">pandas</span><span class="tech-sub">spotipy</span><span class="tech-sub">Pillow</span><span class="tech-sub">pytest</span></div>
           </div>
         </div>
         <div class="tech-card blue">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Airflow-017CEE?style=flat&logo=apacheairflow&logoColor=white" alt="Airflow" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Airflow-0047ba?style=flat&logo=apacheairflow&logoColor=white" alt="Airflow" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Airflow / Astronomer</span>
             <div class="tech-subs"><span class="tech-sub">DAGs</span><span class="tech-sub">scheduling</span></div>
@@ -1000,44 +1002,44 @@
       <div class="tech-group-label">Cloud &amp; Infrastructure</div>
       <div class="tech-cards">
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white" alt="Azure" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Azure-0047ba?style=flat&logo=microsoftazure&logoColor=white" alt="Azure" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Azure</span>
             <div class="tech-subs"><span class="tech-sub">Databricks</span><span class="tech-sub">Data Factory</span></div>
           </div>
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Supabase-3FCF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Supabase-427c42?style=flat&logo=supabase&logoColor=white" alt="Supabase" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Supabase</span>
             <div class="tech-subs"><span class="tech-sub">Auth</span><span class="tech-sub">PostgreSQL</span><span class="tech-sub">RLS</span></div>
           </div>
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-GitHub%20Actions-0047ba?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">GitHub Actions</span>
             <div class="tech-subs"><span class="tech-sub">CI/CD pipelines</span></div>
           </div>
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Docker-0047ba?style=flat&logo=docker&logoColor=white" alt="Docker" style="height:20px;width:auto;border-radius:4px"/>
           Docker
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white" alt="Git" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Git-cf3339?style=flat&logo=git&logoColor=white" alt="Git" style="height:20px;width:auto;border-radius:4px"/>
           Git
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Bitbucket-0052CC?style=flat&logo=bitbucket&logoColor=white" alt="Bitbucket" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Bitbucket-0047ba?style=flat&logo=bitbucket&logoColor=white" alt="Bitbucket" style="height:20px;width:auto;border-radius:4px"/>
           Bitbucket
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Railway-0B0D0E?style=flat&logo=railway&logoColor=white" alt="Railway" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Railway-111111?style=flat&logo=railway&logoColor=white" alt="Railway" style="height:20px;width:auto;border-radius:4px"/>
           Railway
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Hetzner-D50C2D?style=flat&logo=hetzner&logoColor=white" alt="Hetzner" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Hetzner-cf3339?style=flat&logo=hetzner&logoColor=white" alt="Hetzner" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Hetzner Cloud</span>
             <div class="tech-subs"><span class="tech-sub">Caddy</span><span class="tech-sub">VPS</span></div>
@@ -1050,19 +1052,19 @@
       <div class="tech-group-label">BI &amp; Visualization</div>
       <div class="tech-cards">
         <div class="tech-card amber">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Tableau-E97627?style=flat&logo=tableau&logoColor=white" alt="Tableau" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Tableau-cf3339?style=flat&logo=tableau&logoColor=white" alt="Tableau" style="height:20px;width:auto;border-radius:4px"/>
           Tableau
         </div>
         <div class="tech-card amber">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black" alt="Power BI" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Power%20BI-f1c22f?style=flat&logo=powerbi&logoColor=black" alt="Power BI" style="height:20px;width:auto;border-radius:4px"/>
           Power BI
         </div>
         <div class="tech-card amber">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Power%20Automate-0066FF?style=flat&logo=microsoftpowerautomate&logoColor=white" alt="Power Automate" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Power%20Automate-0047ba?style=flat&logo=microsoftpowerautomate&logoColor=white" alt="Power Automate" style="height:20px;width:auto;border-radius:4px"/>
           Power Automate
         </div>
         <div class="tech-card amber">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Recharts-22B5BF?style=flat&logo=react&logoColor=white" alt="Recharts" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Recharts-0047ba?style=flat&logo=react&logoColor=white" alt="Recharts" style="height:20px;width:auto;border-radius:4px"/>
           Recharts
         </div>
       </div>
@@ -1072,25 +1074,25 @@
       <div class="tech-group-label">Frontend &amp; Fullstack</div>
       <div class="tech-cards">
         <div class="tech-card green">
-          <img class="tech-icon" src="https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black" alt="React" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-React-0047ba?style=flat&logo=react&logoColor=black" alt="React" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">React</span>
             <div class="tech-subs"><span class="tech-sub">Router</span><span class="tech-sub">Recharts</span><span class="tech-sub">react-i18next</span><span class="tech-sub">Hooks</span></div>
           </div>
         </div>
         <div class="tech-card green">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white" alt="Django" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Django-111111?style=flat&logo=django&logoColor=white" alt="Django" style="height:20px;width:auto;border-radius:4px"/>
           <div class="tech-card-info">
             <span class="tech-card-name">Django + Wagtail</span>
             <div class="tech-subs"><span class="tech-sub">CMS</span><span class="tech-sub">admin</span><span class="tech-sub">templates</span></div>
           </div>
         </div>
         <div class="tech-card green">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Vite-0047ba?style=flat&logo=vite&logoColor=white" alt="Vite" style="height:20px;width:auto;border-radius:4px"/>
           Vite
         </div>
         <div class="tech-card green">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" style="height:20px;width:auto;border-radius:4px"/>
+          <img class="tech-icon" src="https://img.shields.io/badge/-Tailwind-0047ba?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" style="height:20px;width:auto;border-radius:4px"/>
           Tailwind CSS
         </div>
       </div>
@@ -1098,8 +1100,8 @@
 
     <div class="tech-exploring fade-up delay-4">
       <span class="tech-exploring-label">⚗ Currently exploring →</span>
-      <div class="tech-card amber" style="border:1px dashed rgba(251,193,69,0.4);background:transparent">
-        <img class="tech-icon" src="https://img.shields.io/badge/-Apache%20Iceberg-3E3E3E?style=flat&logo=apache&logoColor=white" alt="Apache Iceberg" style="height:20px;width:auto;border-radius:4px"/>
+      <div class="tech-card amber" style="border:1px dashed rgba(241,194,47,0.4);background:transparent">
+        <img class="tech-icon" src="https://img.shields.io/badge/-Apache%20Iceberg-111111?style=flat&logo=apache&logoColor=white" alt="Apache Iceberg" style="height:20px;width:auto;border-radius:4px"/>
         Apache Iceberg
       </div>
     </div>
@@ -1369,7 +1371,7 @@
 
       <div class="cert-card blue fade-up delay-1">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/dbt-Analytics%20Engineering-FF694B?style=for-the-badge&logo=dbt&logoColor=white" alt="dbt Certified" />
+          <img src="https://img.shields.io/badge/dbt-Analytics%20Engineering-cf3339?style=for-the-badge&logo=dbt&logoColor=white" alt="dbt Certified" />
         </div>
         <div class="cert-name">Analytics Engineering Certification</div>
         <div class="cert-issuer">dbt Labs</div>
@@ -1378,7 +1380,7 @@
 
       <div class="cert-card blue fade-up delay-2">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/Snowflake-Core%20%2B%20AI%20%2B%20DWH-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white" alt="Snowflake Badges" />
+          <img src="https://img.shields.io/badge/Snowflake-Core%20%2B%20AI%20%2B%20DWH-0047ba?style=for-the-badge&logo=snowflake&logoColor=white" alt="Snowflake Badges" />
         </div>
         <div class="cert-name">Fundamentals · AI · Data Warehousing</div>
         <div class="cert-issuer">Snowflake</div>
@@ -1387,7 +1389,7 @@
 
       <div class="cert-card coral fade-up delay-3">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/DataCamp-Data%20Engineer%20Associate-03EF62?style=for-the-badge&logo=datacamp&logoColor=black" alt="DataCamp" />
+          <img src="https://img.shields.io/badge/DataCamp-Data%20Engineer%20Associate-427c42?style=for-the-badge&logo=datacamp&logoColor=black" alt="DataCamp" />
         </div>
         <div class="cert-name">Data Engineer Associate</div>
         <div class="cert-issuer">DataCamp · Snowflake track</div>
@@ -1396,7 +1398,7 @@
 
       <div class="cert-card amber fade-up delay-4">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/Astronomer-Airflow%20101-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white" alt="Astronomer" />
+          <img src="https://img.shields.io/badge/Astronomer-Airflow%20101-0047ba?style=for-the-badge&logo=apacheairflow&logoColor=white" alt="Astronomer" />
         </div>
         <div class="cert-name">Airflow 101 Certification</div>
         <div class="cert-issuer">Astronomer</div>
@@ -1405,7 +1407,7 @@
 
       <div class="cert-card green fade-up delay-5">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/EASA-Remote%20Pilot-0d47a1?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yMSAxNnYtMmwtOC01VjMuNWMwLS44My0uNjctMS41LTEuNS0xLjVTMTAgMi42NyAxMCAzLjV2NS41bC04IDV2MmwxLTF2MGw3LTJ2NS41bC0yIDEuNXYxLjVsNC41LTEuNUwxNiAyMXYtMS41bC0yLTEuNVYxMi41bDctMnoiLz48L3N2Zz4=&logoColor=white" alt="EASA Remote Pilot" />
+          <img src="https://img.shields.io/badge/EASA-Remote%20Pilot-0047ba?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0yMSAxNnYtMmwtOC01VjMuNWMwLS44My0uNjctMS41LTEuNS0xLjVTMTAgMi42NyAxMCAzLjV2NS41bC04IDV2MmwxLTF2MGw3LTJ2NS41bC0yIDEuNXYxLjVsNC41LTEuNUwxNiAyMXYtMS41bC0yLTEuNVYxMi41bDctMnoiLz48L3N2Zz4=&logoColor=white" alt="EASA Remote Pilot" />
         </div>
         <div class="cert-name">Remote Pilot Certification</div>
         <div class="cert-issuer">EASA · EU Aviation Safety Agency</div>
@@ -1414,7 +1416,7 @@
 
       <div class="cert-card blue fade-up delay-5">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/Belbin-Team%20Roles%20Accredited-2c3e50?style=for-the-badge&logoColor=white" alt="Belbin" />
+          <img src="https://img.shields.io/badge/Belbin-Team%20Roles%20Accredited-111111?style=for-the-badge&logoColor=white" alt="Belbin" />
         </div>
         <div class="cert-name">Team Roles Accredited</div>
         <div class="cert-issuer">Belbin</div>
@@ -1423,7 +1425,7 @@
 
       <div class="cert-card coral fade-up delay-5">
         <div class="cert-badge">
-          <img src="https://img.shields.io/badge/Google-Project%20Management-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Project Management" />
+          <img src="https://img.shields.io/badge/Google-Project%20Management-0047ba?style=for-the-badge&logo=google&logoColor=white" alt="Google Project Management" />
         </div>
         <div class="cert-name">Foundations of Project Management</div>
         <div class="cert-issuer">Coursera · Google</div>
@@ -1509,7 +1511,7 @@
     const ctx = canvas.getContext('2d');
     let W, H, particles = [], animId;
 
-    const COLORS = ['rgba(88,166,255,', 'rgba(255,107,107,', 'rgba(251,193,69,'];
+    const COLORS = ['rgba(0,71,186,', 'rgba(207,51,57,', 'rgba(241,194,47,'];
     const COUNT = 55;
 
     function resize() {
@@ -1556,7 +1558,7 @@
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(88,166,255,' + (0.05 * (1 - dist / 120)) + ')';
+            ctx.strokeStyle = 'rgba(0,71,186,' + (0.05 * (1 - dist / 120)) + ')';
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
