@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Miquel Matoses — Data Engineer & Analytics Engineer</title>
   <meta name="description" content="Data Engineer and Analytics Engineer based in Copenhagen. dbt Certified. Snowflake architect. Modern data stack builder." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%230047ba' text-anchor='middle'>mm</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23ffffff' stroke='%23e5e7eb' stroke-width='1'/><text x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23cf3339' text-anchor='middle'>mm</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
@@ -13,12 +13,12 @@
     /* ─── RESET & BASE ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:        #111827;
-      --bg2:       #1f2937;
-      --bg3:       #374151;
-      --border:    #4b5563;
-      --text:      #e6edf3;
-      --muted:     #8b949e;
+      --bg:        #ffffff;
+      --bg2:       #f9fafb;
+      --bg3:       #f3f4f6;
+      --border:    #e5e7eb;
+      --text:      #111111;
+      --muted:     #666666;
       --blue:      #0047ba;
       --coral:     #cf3339;
       --amber:     #f1c22f;
@@ -112,7 +112,7 @@
       transition: background var(--transition), backdrop-filter var(--transition);
     }
     .nav.scrolled {
-      background: rgba(17,24,39,0.85);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -171,7 +171,7 @@
       display: none;
       position: fixed;
       top: 61px; left: 0; right: 0;
-      background: rgba(13,17,23,0.97);
+      background: rgba(255,255,255,0.97);
       border-bottom: 1px solid var(--border);
       padding: 1.5rem;
       flex-direction: column;
@@ -290,8 +290,8 @@
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
       background: var(--blue);
-      color: #0d1117;
-      box-shadow: 0 4px 20px rgba(0,71,186,0.3);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,71,186,0.2);
     }
     .btn-primary:hover { box-shadow: 0 6px 28px rgba(0,71,186,0.5); }
     .btn-outline {
@@ -333,20 +333,21 @@
     .about-text p strong { color: var(--text); }
     .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
     .terminal {
-      background: var(--bg);
-      border: 1px solid var(--border);
+      background: #111111;
+      color: #e6edf3;
+      border: 1px solid #374151;
       border-radius: var(--radius);
       overflow: hidden;
       font-family: var(--mono);
       font-size: 0.82rem;
     }
     .terminal-bar {
-      background: var(--bg3);
+      background: #1f2937;
       padding: 0.6rem 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #374151;
     }
     .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
     .terminal-dot.red    { background: #ff5f57; }
@@ -355,7 +356,7 @@
     .terminal-title { color: var(--muted); font-size: 0.78rem; margin-left: 0.5rem; }
     .terminal-body { padding: 1.25rem 1.5rem; line-height: 2; }
     .t-prompt { color: var(--green); }
-    .t-cmd    { color: var(--text); }
+    .t-cmd    { color: #e6edf3; }
     .t-key    { color: var(--blue); }
     .t-val    { color: var(--amber); }
     .t-comment{ color: var(--muted); }
@@ -399,9 +400,9 @@
       font-family: var(--mono);
       color: var(--muted);
       padding: 0.08rem 0.4rem;
-      background: rgba(255,255,255,0.03);
+      background: var(--bg);
       border-radius: 4px;
-      border: 1px solid rgba(48,54,61,0.6);
+      border: 1px solid var(--border);
       white-space: nowrap;
     }
     .tech-card:hover { transform: translateY(-2px); }
@@ -954,7 +955,7 @@
 <!-- ═══════════════════════════ TECH STACK ════════════════════ -->
 <section class="section" id="tech">
   <div class="container">
-    <p class="section-label fade-up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><circle cx="12" cy="12" r="9" stroke-width="1.6"/><circle cx="12" cy="12" r="5.5" stroke-width="1.4"/><circle cx="12" cy="12" r="2" stroke-width="1.4"/></svg>tech stack</p>
+    <p class="section-label fade-up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M12 2 L2 7 L12 12 L22 7 Z"/><path d="M2 12 L12 17 L22 12"/><path d="M2 17 L12 22 L22 17"/></svg>tech stack</p>
     <h2 class="section-title fade-up">Tools I build with</h2>
     <p class="section-subtitle fade-up">
       The modern data stack is my natural habitat. Here's what I reach for.
@@ -1114,7 +1115,7 @@
 <!-- ═══════════════════════════ EXPERIENCE ════════════════════ -->
 <section class="section experience" id="experience">
   <div class="container">
-    <p class="section-label fade-up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path stroke-width="1.9" d="M5 12 C8 12.2 15 11.8 18.5 12"/><path stroke-width="1.9" d="M18.5 12 L14 7.5 M18.5 12 L14 16.5"/></svg>experience</p>
+    <p class="section-label fade-up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M8 18 C6.5 16.5 3.5 13.5 2.5 12 C3.5 10.5 6.5 7.5 8 6"/><path d="M16 6 C17.5 7.5 20.5 10.5 21.5 12 C20.5 13.5 17.5 16.5 16 18"/><path d="M14.5 4 L9.5 20"/></svg>experience</p>
     <h2 class="section-title fade-up">Where I've built things</h2>
     <p class="section-subtitle fade-up">
       8+ years building data systems across Travel, FMCG, and Agri-food.
@@ -1365,7 +1366,7 @@
 <!-- ═══════════════════════════ CERTIFICATIONS ════════════════ -->
 <section class="section" id="certs">
   <div class="container">
-    <p class="section-label fade-up"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path stroke-width="2.5" d="M5 16.5 C7.5 19 10.5 23 12.5 25 C17 20 22 13 27.5 6.5"/></svg>certifications</p>
+    <p class="section-label fade-up"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 L7 22 L12 19.5 L17 22 L15.5 14"/></svg>certifications</p>
     <h2 class="section-title fade-up">Credentials</h2>
     <p class="section-subtitle fade-up">
       Verified. Not just read the docs.
@@ -1444,7 +1445,7 @@
   <div class="container">
     <div class="book-inner">
       <div class="fade-up">
-        <p class="section-label" style="text-align:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path stroke-width="1.9" d="M12 15.5 L12 5"/><path stroke-width="1.9" d="M12 5 L7.5 9.5 M12 5 L16.5 9.5"/><path stroke-width="1.9" d="M5 17.5 L5 20 L19 20 L19 17.5"/></svg>let's connect</p>
+        <p class="section-label" style="text-align:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M10 13.5 C10.8 14.5 12 15 13.5 15 C16 15 18 13 18 10.5 L18 9.5 C18 7 16 5 13.5 5 C12 5 10.8 5.5 10 6.5"/><path d="M14 10.5 C13.2 9.5 12 9 10.5 9 C8 9 6 11 6 13.5 L6 14.5 C6 17 8 19 10.5 19 C12 19 13.2 18.5 14 17.5"/></svg>let's connect</p>
         <h2 class="book-title">Let's talk <span class="accent-coral">data</span></h2>
         <p class="book-subtitle">
           30-minute intro call — no pitch, just a conversation about your data challenges.
@@ -1514,8 +1515,8 @@
     const ctx = canvas.getContext('2d');
     let W, H, particles = [], animId;
 
-    const COLORS = ['rgba(0,71,186,', 'rgba(207,51,57,', 'rgba(241,194,47,'];
-    const COUNT = 55;
+    const COLORS = ['rgba(0,71,186,'];
+    const COUNT = 30;
 
     function resize() {
       W = canvas.width  = window.innerWidth;
@@ -1529,7 +1530,7 @@
         this.r  = Math.random() * 1.5 + 0.4;
         this.vx = (Math.random() - 0.5) * 0.3;
         this.vy = (Math.random() - 0.5) * 0.3;
-        this.alpha = Math.random() * 0.4 + 0.1;
+        this.alpha = Math.random() * 0.12 + 0.03;
         this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
       };
       this.reset();
@@ -1561,7 +1562,7 @@
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(0,71,186,' + (0.05 * (1 - dist / 120)) + ')';
+            ctx.strokeStyle = 'rgba(0,71,186,' + (0.025 * (1 - dist / 120)) + ')';
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
