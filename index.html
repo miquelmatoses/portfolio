@@ -377,14 +377,26 @@
       background: var(--bg2);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 0.55rem 1rem;
+      padding: 0.65rem 1rem 0.55rem;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.6rem;
       font-size: 0.88rem;
       font-weight: 500;
       transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
       cursor: default;
+    }
+    .tech-card-info { display: flex; flex-direction: column; gap: 0.3rem; }
+    .tech-subs { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .tech-sub {
+      font-size: 0.65rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      padding: 0.08rem 0.4rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 4px;
+      border: 1px solid rgba(48,54,61,0.6);
+      white-space: nowrap;
     }
     .tech-card:hover { transform: translateY(-2px); }
     .tech-card.blue  { border-left: 3px solid var(--blue);  }
@@ -474,6 +486,11 @@
 
     /* ─── PROJECTS ─────────────────────────────────────────────── */
     .projects { background: var(--bg2); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
     .project-card {
       background: var(--bg);
       border: 1px solid var(--border);
@@ -486,20 +503,19 @@
       border-color: var(--green);
       box-shadow: 0 8px 32px rgba(63,185,80,0.12);
     }
-    .project-card-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
+    .project-card.amber:hover {
+      border-color: var(--amber);
+      box-shadow: 0 8px 32px rgba(251,193,69,0.12);
     }
     .project-visual {
       background: linear-gradient(135deg, #0f1a12 0%, #162416 50%, #0d1117 100%);
-      padding: 3rem 2.5rem;
+      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
-      border-right: 1px solid var(--border);
+      gap: 1.2rem;
+      border-bottom: 1px solid var(--border);
       position: relative;
       overflow: hidden;
     }
@@ -509,17 +525,30 @@
       inset: 0;
       background: radial-gradient(circle at 30% 50%, rgba(63,185,80,0.08) 0%, transparent 60%);
     }
+    .project-visual.amber {
+      background: linear-gradient(135deg, #1a1508 0%, #24200d 50%, #0d1117 100%);
+    }
+    .project-visual.amber::before {
+      background: radial-gradient(circle at 30% 50%, rgba(251,193,69,0.08) 0%, transparent 60%);
+    }
     .project-logo-svg {
-      width: 180px;
+      width: 160px;
       height: auto;
       color: var(--text);
+      position: relative;
+      z-index: 1;
+    }
+    .project-logo-text {
+      font-family: var(--mono);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
       position: relative;
       z-index: 1;
     }
     .project-moon-phases {
       display: flex;
       gap: 1rem;
-      font-size: 1.8rem;
       position: relative;
       z-index: 1;
     }
@@ -536,11 +565,37 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .project-body {
-      padding: 2.5rem;
+    .project-territories {
+      display: flex;
+      gap: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .project-territory {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .project-territory-code {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.05em;
+    }
+    .project-territory-name {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .project-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .project-type {
       font-family: var(--mono);
@@ -550,48 +605,50 @@
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
+    .project-type.amber { color: var(--amber); }
     .project-name {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       line-height: 1.2;
     }
     .project-tagline {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 1rem;
     }
     .project-highlights {
       padding-left: 1.1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     .project-highlights li {
       list-style: disc;
       color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 0.4rem;
-      line-height: 1.6;
+      font-size: 0.82rem;
+      margin-bottom: 0.35rem;
+      line-height: 1.55;
     }
     .project-highlights li strong { color: var(--text); }
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.5rem;
+      gap: 0.35rem;
+      margin-bottom: 1.2rem;
     }
     .project-links {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
+      margin-top: auto;
     }
     .project-link {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.45rem 1rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 6px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       border: 1px solid var(--border);
       color: var(--muted);
@@ -612,10 +669,22 @@
       background: #4cc964;
       box-shadow: 0 4px 16px rgba(63,185,80,0.3);
     }
+    .project-link.amber:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+      background: rgba(251,193,69,0.06);
+    }
+    .project-link.primary.amber {
+      background: var(--amber);
+      color: #0d1117;
+      border-color: var(--amber);
+    }
+    .project-link.primary.amber:hover {
+      background: #fcc94d;
+      box-shadow: 0 4px 16px rgba(251,193,69,0.3);
+    }
     @media (max-width: 900px) {
-      .project-card-inner { grid-template-columns: 1fr; }
-      .project-visual { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
-      .project-body { padding: 1.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     /* ─── CERTIFICATIONS ───────────────────────────────────────── */
@@ -840,6 +909,7 @@
           <span class="t-line"><span class="t-key">languages</span>    <span class="t-val">["SQL", "Python", "Danish*"]</span></span>
           <span class="t-line"><span class="t-comment">             // *still learning</span></span>
           <span class="t-line"><span class="t-key">industries</span>   <span class="t-val">["Travel","FMCG","Agri-food"]</span></span>
+          <span class="t-line"><span class="t-key">projects</span>     <span class="t-val">["cercol.team", "topquaranta.cat"]</span></span>
           <span class="t-line"><span class="t-key">paellas</span>      <span class="t-val">200+</span> <span class="t-comment">// cooked for</span></span>
           <span class="t-line"><span class="t-key">status</span>       <span class="t-val">"open to opportunities"</span></span>
           <span class="t-line">&nbsp;</span>
@@ -864,23 +934,38 @@
       <div class="tech-cards">
         <div class="tech-card blue">
           <img class="tech-icon" src="https://img.shields.io/badge/-dbt-FF694B?style=flat&logo=dbt&logoColor=white" alt="dbt" style="height:20px;width:auto;border-radius:4px"/>
-          dbt Core &amp; Cloud
+          <div class="tech-card-info">
+            <span class="tech-card-name">dbt Core &amp; Cloud</span>
+            <div class="tech-subs"><span class="tech-sub">Jinja macros</span><span class="tech-sub">testing</span><span class="tech-sub">CI/CD</span><span class="tech-sub">Cloud jobs</span></div>
+          </div>
         </div>
         <div class="tech-card blue">
           <img class="tech-icon" src="https://img.shields.io/badge/-Snowflake-29B5E8?style=flat&logo=snowflake&logoColor=white" alt="Snowflake" style="height:20px;width:auto;border-radius:4px"/>
-          Snowflake
+          <div class="tech-card-info">
+            <span class="tech-card-name">Snowflake</span>
+            <div class="tech-subs"><span class="tech-sub">Tasks</span><span class="tech-sub">Streams</span><span class="tech-sub">Stored Procs</span></div>
+          </div>
         </div>
         <div class="tech-card blue">
           <img class="tech-icon" src="https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=postgresql&logoColor=white" alt="SQL" style="height:20px;width:auto;border-radius:4px"/>
-          SQL
+          <div class="tech-card-info">
+            <span class="tech-card-name">SQL</span>
+            <div class="tech-subs"><span class="tech-sub">PostgreSQL</span><span class="tech-sub">Snowflake SQL</span></div>
+          </div>
         </div>
         <div class="tech-card blue">
           <img class="tech-icon" src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" style="height:20px;width:auto;border-radius:4px"/>
-          Python
+          <div class="tech-card-info">
+            <span class="tech-card-name">Python</span>
+            <div class="tech-subs"><span class="tech-sub">FastAPI</span><span class="tech-sub">Django</span><span class="tech-sub">pandas</span><span class="tech-sub">spotipy</span><span class="tech-sub">Pillow</span><span class="tech-sub">pytest</span></div>
+          </div>
         </div>
         <div class="tech-card blue">
           <img class="tech-icon" src="https://img.shields.io/badge/-Airflow-017CEE?style=flat&logo=apacheairflow&logoColor=white" alt="Airflow" style="height:20px;width:auto;border-radius:4px"/>
-          Airflow / Astronomer
+          <div class="tech-card-info">
+            <span class="tech-card-name">Airflow / Astronomer</span>
+            <div class="tech-subs"><span class="tech-sub">DAGs</span><span class="tech-sub">scheduling</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -890,29 +975,49 @@
       <div class="tech-cards">
         <div class="tech-card coral">
           <img class="tech-icon" src="https://img.shields.io/badge/-Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white" alt="Azure" style="height:20px;width:auto;border-radius:4px"/>
-          Azure
+          <div class="tech-card-info">
+            <span class="tech-card-name">Azure</span>
+            <div class="tech-subs"><span class="tech-sub">Databricks</span><span class="tech-sub">Data Factory</span></div>
+          </div>
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Databricks-FF3621?style=flat&logo=databricks&logoColor=white" alt="Databricks" style="height:20px;width:auto;border-radius:4px"/>
-          Databricks
+          <img class="tech-icon" src="https://img.shields.io/badge/-Supabase-3FCF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase" style="height:20px;width:auto;border-radius:4px"/>
+          <div class="tech-card-info">
+            <span class="tech-card-name">Supabase</span>
+            <div class="tech-subs"><span class="tech-sub">Auth</span><span class="tech-sub">PostgreSQL</span><span class="tech-sub">RLS</span></div>
+          </div>
         </div>
         <div class="tech-card coral">
           <img class="tech-icon" src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white" alt="GitHub Actions" style="height:20px;width:auto;border-radius:4px"/>
-          GitHub Actions
+          <div class="tech-card-info">
+            <span class="tech-card-name">GitHub Actions</span>
+            <div class="tech-subs"><span class="tech-sub">CI/CD pipelines</span></div>
+          </div>
+        </div>
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" style="height:20px;width:auto;border-radius:4px"/>
+          Docker
         </div>
         <div class="tech-card coral">
           <img class="tech-icon" src="https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white" alt="Git" style="height:20px;width:auto;border-radius:4px"/>
           Git
         </div>
         <div class="tech-card coral">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" style="height:20px;width:auto;border-radius:4px"/>
-          Docker
+          <img class="tech-icon" src="https://img.shields.io/badge/-Railway-0B0D0E?style=flat&logo=railway&logoColor=white" alt="Railway" style="height:20px;width:auto;border-radius:4px"/>
+          Railway
+        </div>
+        <div class="tech-card coral">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Hetzner-D50C2D?style=flat&logo=hetzner&logoColor=white" alt="Hetzner" style="height:20px;width:auto;border-radius:4px"/>
+          <div class="tech-card-info">
+            <span class="tech-card-name">Hetzner Cloud</span>
+            <div class="tech-subs"><span class="tech-sub">Caddy</span><span class="tech-sub">VPS</span></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="tech-group fade-up delay-2">
-      <div class="tech-group-label">BI &amp; Reporting</div>
+      <div class="tech-group-label">BI &amp; Visualization</div>
       <div class="tech-cards">
         <div class="tech-card amber">
           <img class="tech-icon" src="https://img.shields.io/badge/-Tableau-E97627?style=flat&logo=tableau&logoColor=white" alt="Tableau" style="height:20px;width:auto;border-radius:4px"/>
@@ -926,6 +1031,10 @@
           <img class="tech-icon" src="https://img.shields.io/badge/-Power%20Automate-0066FF?style=flat&logo=microsoftpowerautomate&logoColor=white" alt="Power Automate" style="height:20px;width:auto;border-radius:4px"/>
           Power Automate
         </div>
+        <div class="tech-card amber">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Recharts-22B5BF?style=flat&logo=react&logoColor=white" alt="Recharts" style="height:20px;width:auto;border-radius:4px"/>
+          Recharts
+        </div>
       </div>
     </div>
 
@@ -934,7 +1043,17 @@
       <div class="tech-cards">
         <div class="tech-card green">
           <img class="tech-icon" src="https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black" alt="React" style="height:20px;width:auto;border-radius:4px"/>
-          React
+          <div class="tech-card-info">
+            <span class="tech-card-name">React</span>
+            <div class="tech-subs"><span class="tech-sub">Router</span><span class="tech-sub">Recharts</span><span class="tech-sub">react-i18next</span><span class="tech-sub">Hooks</span></div>
+          </div>
+        </div>
+        <div class="tech-card green">
+          <img class="tech-icon" src="https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white" alt="Django" style="height:20px;width:auto;border-radius:4px"/>
+          <div class="tech-card-info">
+            <span class="tech-card-name">Django + Wagtail</span>
+            <div class="tech-subs"><span class="tech-sub">CMS</span><span class="tech-sub">admin</span><span class="tech-sub">templates</span></div>
+          </div>
         </div>
         <div class="tech-card green">
           <img class="tech-icon" src="https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite" style="height:20px;width:auto;border-radius:4px"/>
@@ -943,14 +1062,6 @@
         <div class="tech-card green">
           <img class="tech-icon" src="https://img.shields.io/badge/-Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" style="height:20px;width:auto;border-radius:4px"/>
           Tailwind CSS
-        </div>
-        <div class="tech-card green">
-          <img class="tech-icon" src="https://img.shields.io/badge/-FastAPI-009688?style=flat&logo=fastapi&logoColor=white" alt="FastAPI" style="height:20px;width:auto;border-radius:4px"/>
-          FastAPI
-        </div>
-        <div class="tech-card green">
-          <img class="tech-icon" src="https://img.shields.io/badge/-Supabase-3FCF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase" style="height:20px;width:auto;border-radius:4px"/>
-          Supabase
         </div>
       </div>
     </div>
@@ -971,7 +1082,7 @@
     <p class="section-label fade-up">// experience</p>
     <h2 class="section-title fade-up">Where I've built things</h2>
     <p class="section-subtitle fade-up">
-      4+ years in production data stacks across Travel, FMCG, and Agri-food.
+      8+ years building data systems across Travel, FMCG, and Agri-food.
     </p>
 
     <div class="timeline">
@@ -1051,10 +1162,12 @@
       Side projects where I go beyond the day job and build end-to-end.
     </p>
 
-    <div class="project-card fade-up delay-1">
-      <div class="project-card-inner">
+    <div class="projects-grid">
+
+      <!-- ── cercol.team ─────────────────────────────────────────── -->
+      <div class="project-card fade-up delay-1">
         <div class="project-visual">
-          <svg class="project-logo-svg" viewBox="0 0 1122.52 470.92" fill="currentColor" aria-label="Cèrcol logo">
+          <svg class="project-logo-svg" viewBox="0 0 1122.52 470.92" fill="currentColor" aria-label="Cercol logo">
             <path d="m 3969.73,2230.29 c -93.36,-159.94 -143.58,-333.14 -53.28,-385.84 90.29,-52.7 208.72,63.02 302.08,222.96 104.65,179.29 131.96,339.92 53.28,385.85 -78.68,45.92 -197.43,-43.68 -302.08,-222.97" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
             <path d="m 1212.64,2357.4 c -180.39,-41.94 -340.788,-124.34 -317.113,-226.18 23.676,-101.83 189.123,-108.48 369.503,-66.54 202.21,47.01 337.74,137.44 317.12,226.17 -20.64,88.74 -167.31,113.55 -369.51,66.55" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
             <path d="m 5418.53,2357.4 c -180.39,-41.94 -340.79,-124.34 -317.11,-226.18 23.67,-101.83 189.12,-108.48 369.5,-66.54 202.21,47.01 337.74,137.44 317.12,226.17 -20.64,88.74 -167.31,113.55 -369.51,66.55" transform="matrix(0.13333333,0,0,-0.13333333,0,470.92)"/>
@@ -1069,29 +1182,15 @@
           </svg>
           <div class="project-moon-phases">
             <div class="project-moon-phase">
-              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path stroke-width="1.8" d="M16 4.5 C22.5 4 28.5 9.5 28 16 C27.5 22.5 22 28 16 27.5 C9.5 28 3.5 22 4 16 C4.5 9.5 9.5 4 16 4.5 Z"/>
-                <line stroke-width="1.3" x1="4.2" y1="15.8" x2="16.2" y2="3.8"/>
-                <line stroke-width="1.3" x1="5.1" y1="20.9" x2="20.9" y2="5.1"/>
-                <line stroke-width="1.3" x1="7.5" y1="24.5" x2="24.5" y2="7.5"/>
-                <line stroke-width="1.3" x1="11.1" y1="26.9" x2="26.9" y2="11.1"/>
-                <line stroke-width="1.3" x1="15.8" y1="27.8" x2="27.8" y2="15.8"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke-width="1.8" d="M16 4.5 C22.5 4 28.5 9.5 28 16 C27.5 22.5 22 28 16 27.5 C9.5 28 3.5 22 4 16 C4.5 9.5 9.5 4 16 4.5 Z"/><line stroke-width="1.3" x1="4.2" y1="15.8" x2="16.2" y2="3.8"/><line stroke-width="1.3" x1="5.1" y1="20.9" x2="20.9" y2="5.1"/><line stroke-width="1.3" x1="7.5" y1="24.5" x2="24.5" y2="7.5"/><line stroke-width="1.3" x1="11.1" y1="26.9" x2="26.9" y2="11.1"/><line stroke-width="1.3" x1="15.8" y1="27.8" x2="27.8" y2="15.8"/></svg>
               <span class="project-moon-label">New</span>
             </div>
             <div class="project-moon-phase">
-              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path stroke-width="1.8" d="M16 4.5 C22.5 4 28.5 9.5 28 16.5 C27.5 23 21.5 28 16 27.5 C14.5 21.5 14 10.5 16 4.5 Z"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke-width="1.8" d="M16 4.5 C22.5 4 28.5 9.5 28 16.5 C27.5 23 21.5 28 16 27.5 C14.5 21.5 14 10.5 16 4.5 Z"/></svg>
               <span class="project-moon-label">Quarter</span>
             </div>
             <div class="project-moon-phase">
-              <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path stroke-width="1.8" d="M16 4.5 C22.5 4 28 9.5 27.5 16 C27 22.5 22.5 28 16 27.5 C9.5 28 4 22 4.5 16 C5 9.5 9.5 4 16 4.5 Z"/>
-                <path stroke-width="1.2" d="M10 13.5 C10 12.2 13 12.2 13 13.5 C13 14.8 10 14.8 10 13.5 Z"/>
-                <path stroke-width="1.2" d="M19.5 20.5 C19.5 19.5 21.5 19.5 21.5 20.5 C21.5 21.5 19.5 21.5 19.5 20.5 Z"/>
-                <path stroke-width="1" d="M18.5 9.5 C18.5 8.8 20 8.8 20 9.5 C20 10.2 18.5 10.2 18.5 9.5 Z"/>
-              </svg>
+              <svg width="36" height="36" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke-width="1.8" d="M16 4.5 C22.5 4 28 9.5 27.5 16 C27 22.5 22.5 28 16 27.5 C9.5 28 4 22 4.5 16 C5 9.5 9.5 4 16 4.5 Z"/><path stroke-width="1.2" d="M10 13.5 C10 12.2 13 12.2 13 13.5 C13 14.8 10 14.8 10 13.5 Z"/><path stroke-width="1.2" d="M19.5 20.5 C19.5 19.5 21.5 19.5 21.5 20.5 C21.5 21.5 19.5 21.5 19.5 20.5 Z"/><path stroke-width="1" d="M18.5 9.5 C18.5 8.8 20 8.8 20 9.5 C20 10.2 18.5 10.2 18.5 9.5 Z"/></svg>
               <span class="project-moon-label">Full</span>
             </div>
           </div>
@@ -1100,25 +1199,25 @@
           <div class="project-type">Open-source · Personality Assessment</div>
           <h3 class="project-name">cercol.team</h3>
           <p class="project-tagline">
-            Psychometric assessment platform grounded in peer-reviewed science (IPIP).
-            Three instruments — from a 2-minute snapshot to a 120-item deep profile —
-            with a 12-role team system built on the AB5C circumplex model.
+            Psychometric platform grounded in peer-reviewed science (IPIP).
+            Three instruments, a witness system for observer ratings,
+            team reports, and a 12-role system built on the AB5C circumplex — all in 6 languages.
           </p>
           <ul class="project-highlights">
-            <li>Built <strong>full-stack from zero</strong> — React 19 + Vite frontend, FastAPI backend, Supabase auth &amp; database</li>
-            <li><strong>Three assessment tiers</strong> (New Moon, First Quarter, Full Moon) measuring Big Five personality dimensions</li>
-            <li><strong>12 animal-based team roles</strong> derived from Euclidean distance in 5D personality space + softmax scoring</li>
-            <li>Bilingual UI <strong>(English + Catalan)</strong> with react-i18next, Stripe payments, and GitHub Pages deployment</li>
+            <li>Built <strong>full-stack from zero</strong> — React 19 + Vite, FastAPI backend, Supabase auth &amp; database, Stripe payments</li>
+            <li><strong>6-language i18n</strong> (EN, CA, ES, FR, DE, DA) with psychometrically rigorous item translation</li>
+            <li><strong>12 animal-based team roles</strong> — client-side z-score normalization, Euclidean distance in 5D space, softmax scoring</li>
+            <li><strong>Witness system</strong> with forced-choice adjectives, blind spot detection, and Last Quarter team reports with Recharts radar charts</li>
           </ul>
           <div class="project-tags">
-            <span class="tag green">React</span>
+            <span class="tag green">React 19</span>
             <span class="tag green">Vite</span>
-            <span class="tag green">Tailwind CSS</span>
+            <span class="tag green">Tailwind</span>
             <span class="tag green">FastAPI</span>
             <span class="tag green">Supabase</span>
-            <span class="tag">Python</span>
+            <span class="tag">Recharts</span>
             <span class="tag">Stripe</span>
-            <span class="tag">i18n</span>
+            <span class="tag">6 languages</span>
           </div>
           <div class="project-links">
             <a href="https://cercol.team" target="_blank" rel="noopener" class="project-link primary">
@@ -1127,13 +1226,68 @@
             </a>
             <a href="https://github.com/miquelmatoses/cercol" target="_blank" rel="noopener" class="project-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Source code
+              Source
             </a>
           </div>
         </div>
       </div>
-    </div>
 
+      <!-- ── topquaranta.cat ─────────────────────────────────────── -->
+      <div class="project-card amber fade-up delay-2">
+        <div class="project-visual amber">
+          <div class="project-logo-text" style="color:var(--amber)">TOP 40</div>
+          <div class="project-territories">
+            <div class="project-territory">
+              <span class="project-territory-code">CAT</span>
+              <span class="project-territory-name">Catalunya</span>
+            </div>
+            <div class="project-territory">
+              <span class="project-territory-code">VAL</span>
+              <span class="project-territory-name">Valencia</span>
+            </div>
+            <div class="project-territory">
+              <span class="project-territory-code">BAL</span>
+              <span class="project-territory-name">Balears</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-type amber">Side project · Music Analytics</div>
+          <h3 class="project-name">topquaranta.cat</h3>
+          <p class="project-tagline">
+            Weekly Top 40 of Catalan-language music across three territories,
+            powered by a multi-signal ranking algorithm and dual-API data pipelines.
+          </p>
+          <ul class="project-highlights">
+            <li><strong>Django 5.2 + Wagtail 7.0</strong> CMS with PostgreSQL on Hetzner Cloud + Caddy reverse proxy</li>
+            <li><strong>14-coefficient ranking algorithm</strong> with age decay, monopoly penalties, novelty bonuses, and smoothing</li>
+            <li><strong>Dual-API data pipeline</strong> — Last.fm + Spotify with rate limiting, retry logic, and artist auto-discovery from Viasona</li>
+            <li><strong>Telegram bot distribution</strong> with Pillow-generated chart images, per-territory rankings</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag amber">Django</span>
+            <span class="tag amber">Wagtail</span>
+            <span class="tag amber">PostgreSQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">Spotify API</span>
+            <span class="tag">Last.fm</span>
+            <span class="tag">Telegram</span>
+            <span class="tag">Pillow</span>
+          </div>
+          <div class="project-links">
+            <a href="https://topquaranta.cat" target="_blank" rel="noopener" class="project-link primary amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live site
+            </a>
+            <a href="https://github.com/miquelmatoses/TopQuaranta" target="_blank" rel="noopener" class="project-link amber">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
