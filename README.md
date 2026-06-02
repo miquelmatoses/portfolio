@@ -41,7 +41,7 @@ Segueix les convencions de [mm-design](https://github.com/miquelmatoses/mm-desig
 
 <div align="center">
 
-![Last Updated](https://img.shields.io/badge/Última_actualització-Abril_2026-0047ba?style=flat-square)
+![Last Updated](https://img.shields.io/badge/Última_actualització-Juny_2026-0047ba?style=flat-square)
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0047ba,50:111111,100:111111&height=80&section=footer" width="100%" />
 
