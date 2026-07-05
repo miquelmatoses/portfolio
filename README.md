@@ -20,10 +20,10 @@ Modernisme valencià: inspired by the Estació del Nord mosaics and the Mercat C
 
 ## What it shows
 
-- 6 projects: cercol.team, topquaranta.cat, poblacio-valenciana, ordit, aplegats, la llotja — each with a collapsed dossier detailing scope and current status
-- Timeline: TechBBQ, HBX Group, Huxley/Bacardi-Martini, Cèrcol Coop
-- Stack: Core data, Cloud, BI, Web, AI & agents
-- Certifications: dbt, Snowflake, DataCamp, Astronomer + Bachelor in Education (UV)
+- 6 data projects (cercol.team, topquaranta.cat, poblacio-valenciana, ordit, aplegats, la llotja) plus a physical engineering chapter (rice mill, dust extraction) — each with a collapsed dossier detailing scope and current status
+- Timeline: TechBBQ, HBX Group, Huxley/Bacardi-Martini, Cèrcol Coop, Agroalbufera
+- Stack: Core data, Cloud, BI, Web, Engineering & field, AI & agents
+- Credentials: BEng Agri-Food Engineering (UPV, EUR-ACE), dbt, Snowflake, Engineers Australia MSA, DataCamp, Astronomer, AutoCAD, Mechatronics (1st year), Bachelor in Education (UV)
 
 ---
 
