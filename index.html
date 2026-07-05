@@ -32,7 +32,7 @@
     "https://www.linkedin.com/in/miquelmatoses",
     "https://github.com/miquelmatoses"
   ],
-  "knowsAbout": ["dbt", "Snowflake", "SQL", "Python", "Data Engineering", "Analytics Engineering", "Airflow", "Azure Databricks", "BigQuery", "Agri-Food Engineering", "AgTech", "Irrigation", "GIS", "Environmental Monitoring"],
+  "knowsAbout": ["dbt", "Snowflake", "SQL", "Python", "Data Engineering", "Analytics Engineering", "Airflow", "Azure Databricks", "BigQuery", "Agri-Food Engineering", "AgTech", "Irrigation", "GIS", "Environmental Monitoring", "Integrated Pest Management", "UAS", "Drone Operations", "Precision Agriculture"],
   "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universitat Politècnica de València"},
   "knowsLanguage": ["ca", "es", "en", "da"]
 }
@@ -220,7 +220,10 @@
   .dossier ul{margin:12px 0 0;padding-left:17px;font-size:13.5px;line-height:1.55;color:rgba(44,35,22,.78);}
   .dossier li{margin-bottom:7px;}
   .proj-grid.two{grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto;}
+  .proj-grid.one{grid-template-columns:minmax(0,520px);justify-content:center;}
   .stack-group.wide{grid-column:1/-1;}
+  .mov{font-size:27px;text-align:center;margin:76px 0 36px;display:flex;align-items:center;justify-content:center;gap:18px;}
+  .mov::before,.mov::after{content:"";height:1px;width:56px;background:rgba(44,35,22,.35);}
 
   /* stack */
   .stack-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 60px;max-width:880px;margin:0 auto;}
@@ -257,7 +260,7 @@
     .nav-links a{padding:10px 0;}
     nav.open .nav-links{display:flex;}
     .stats-grid{grid-template-columns:repeat(2,1fr);gap:40px 16px;}
-    .proj-grid,.proj-grid.two{grid-template-columns:1fr;}
+    .proj-grid,.proj-grid.two,.proj-grid.one{grid-template-columns:1fr;}
     .stack-cols{grid-template-columns:1fr;}
     .certs{grid-template-columns:repeat(2,1fr);}
     .virtues{grid-template-columns:repeat(2,1fr);}
@@ -391,7 +394,7 @@
       </div>
       <div class="tl-item rv">
         <p class="when" data-en="Jan 2017 - Jan 2018 · AgTech / Rice">Gen 2017 - Gen 2018 · AgTech / Arròs</p>
-        <h3 data-en="Agricultural Engineer">Tècnic agrícola</h3>
+        <h3 data-en="Agricultural Engineer">Enginyer agrícola</h3>
         <p class="tl-org">Agroalbufera SL</p>
         <p data-en="The year I learned that a drawing is worth nothing if it cannot survive the mud: plans for rice farms, logistics and road permits for the harvest machinery, field supervision and irrigation management through the season. I also designed minor agricultural machinery components, calculated crop protection dosing and fertilisation, coordinated field crews, evaluated new rice varieties and worked on converting orange groves into rice paddies around the Albufera.">L'any que vaig aprendre que un plànol no val res si no aguanta el fang: plànols d'explotacions arrosseres, logística i permisos de circulació per a la maquinària de collita, supervisió de camp i gestió del reg durant la campanya. També vaig dissenyar components xicotets de maquinària agrícola, calculava les dosis de fitosanitaris i la fertilització, coordinava equips de camp, avaluava noves varietats d'arròs i vaig participar en la conversió de tarongerars en arrossars a l'entorn de l'Albufera.</p>
         <div class="chips"><span class="chip" data-en="Agronomy">Agronomia</span><span class="chip" data-en="Irrigation">Reg</span><span class="chip" data-en="Machinery">Maquinària</span></div>
@@ -409,6 +412,7 @@
     <div class="about-col" style="margin-bottom:56px;">
       <p class="rv" data-en="Before I built data pipelines I built rice pipelines. The method has not changed: spot the gap, design, test, commission.">Abans de construir pipelines de dades, construïa pipelines d'arròs. El mètode no ha canviat: vore el buit, dissenyar, provar i posar en marxa.</p>
     </div>
+    <h3 class="mov rv" data-en="Machines">Màquines</h3>
     <div class="proj-grid two">
       <article class="proj rv">
         <div class="arch oc"><div class="frame"><svg width="58" height="58" viewBox="0 0 58 58" aria-hidden="true"><g fill="none" style="stroke:var(--cobalt)" stroke-width="2.5" stroke-linecap="round"><circle cx="29" cy="30" r="17"/><circle cx="29" cy="30" r="4.5"/><path d="M33.5 30H46M24.5 30H12M31.25 26.1l6.25-10.8M26.75 33.9l-6.25 10.8M26.75 26.1l-6.25-10.8M31.25 33.9l6.25 10.8"/></g><circle cx="29" cy="30" r="1.8" style="fill:var(--ocher)"/></svg></div></div>
@@ -447,9 +451,34 @@
         </div>
       </article>
     </div>
-    <div class="about-col" style="margin-top:64px;">
+    <h3 class="mov rv" data-en="Field">Camp</h3>
+    <div class="proj-grid one">
+      <article class="proj rv">
+        <div class="arch gr"><div class="frame"><svg width="58" height="58" viewBox="0 0 58 58" aria-hidden="true"><g fill="none" style="stroke:var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M27 52V22"/><path d="M27 36c-7-1-12-6-13-14 8 2 12 6 13 14z"/><path d="M27 26c7-1 12-6 13-14-8 2-12 6-13 14z"/></g><g style="stroke:var(--terra)" fill="none" stroke-width="2"><circle cx="40" cy="44" r="5.5"/><path d="M40 36.5v2M40 49.5v2M32.5 44h2M45.5 44h2"/></g><circle cx="40" cy="44" r="1.8" style="fill:var(--terra)"/></svg></div></div>
+        <div class="body">
+          <p class="tag" data-en="Official accreditation · ROPO">Acreditació oficial · ROPO</p>
+          <h3 data-en="Integrated pest management">Gestió integrada de plagues</h3>
+          <p data-en="I have not just done it: I am accredited as an integrated pest management advisor by the Generalitat Valenciana (RD 1311/2012, art. 12) and listed in the official ROPO advisory register, valid until 2028. The decision to treat or not to treat is a data problem in muddy boots: measure, calculate the dose, apply and evaluate effectiveness.">No sols ho he fet: estic acreditat com a assessor en gestió integrada de plagues per la Generalitat Valenciana (RD 1311/2012, art. 12) i inscrit al registre oficial ROPO, sector assessorament, amb validesa fins al 2028. La decisió de tractar o no tractar és un problema de dades amb botes de fang: mesurar, calcular la dosi, aplicar i avaluar l'efectivitat.</p>
+          <div class="chips"><span class="chip" data-en="IPM advisor">Assessor GIP</span><span class="chip" data-en="Phytosanitary">Fitosanitaris</span><span class="chip" data-en="Field trials">Assajos de camp</span></div>
+          <details class="dossier">
+            <summary data-en="Project dossier">Dossier del projecte</summary>
+            <ul>
+              <li data-en="Accredited advisor in integrated pest management (Generalitat Valenciana, under RD 1311/2012, art. 12), listed in the Official Register of Producers and Operators of phytosanitary defence means (ROPO), advisory sector, valid until 2028.">Assessor acreditat en gestió integrada de plagues (Generalitat Valenciana, conforme al RD 1311/2012, art. 12), inscrit al Registre Oficial de Productors i Operadors de mitjans de defensa fitosanitària (ROPO), sector assessorament, vàlid fins al 2028.</li>
+              <li data-en="Agroalbufera SL (2017-2018): calculation of phytosanitary and fertilisation needs for rice paddies, briefing to operators and applicators before every treatment, and field supervision through the season.">Agroalbufera SL (2017-2018): càlcul de necessitats de fitosanitaris i fertilització per a arrossars, briefing als operaris i aplicadors abans de cada tractament, i supervisió de camp durant la campanya.</li>
+              <li data-en="Cèrcol Coop, as the agronomist: integrated pest and disease management, evaluation of treatment effectiveness, and a crop rotation study for long-term soil health.">Cèrcol Coop, com a agrònom: gestió integrada de plagues i malalties, avaluació de l'efectivitat dels tractaments i estudi de rotació de cultius per a la salut del sòl a llarg termini.</li>
+              <li data-en="Degree thesis (UPV, 2016): experimental study of herbicide resistance (propanil and penoxsulam) in <em>Echinochloa</em> biotypes from rice paddies of the Albufera Natural Park: experimental design, equipment calibration and data analysis.">Tesi de grau (UPV, 2016): estudi experimental de resistència a herbicides (propanil i penoxsulam) en biotips d'<em>Echinochloa</em> d'arrossars del Parc Natural de l'Albufera: disseny experimental, calibratge d'equips i anàlisi de dades.</li>
+            </ul>
+          </details>
+        </div>
+      </article>
+    </div>
+    <div class="about-col" style="margin-top:56px;">
+      <p class="rv" data-en="The drawings come from the same hand: plans for rice farms and for the conversion of orange groves into rice paddies at Agroalbufera, and the design of minor agricultural machinery components. Technical drawing in AutoCAD is the same language I later brought to the mill. There too I researched and evaluated new rice varieties.">Els plànols venen de la mateixa mà: plànols d'explotacions arrosseres i de la conversió de tarongerars en arrossars a Agroalbufera, i el disseny de components xicotets de maquinària agrícola. El dibuix tècnic amb AutoCAD és el mateix llenguatge que després vaig portar al molí. Allí també vaig fer recerca i avaluació de noves varietats d'arròs.</p>
+      <p class="rv rv-d1" data-en="And when the field is seen from above: I am a certified UAS pilot under the EASA framework, open category A1/A3 (AESA), with accredited practical training for the standard scenarios STS-ES-01 (VLOS) and STS-ES-02 (BVLOS) under Regulation (EU) 2019/947. Certified capability, not yet flown on any project: ready for precision agriculture and mapping crossed with GIS.">I quan el camp es mira des de dalt: soc pilot UAS certificat en el marc EASA, categoria oberta A1/A3 (AESA), amb formació pràctica acreditada per als escenaris estàndard STS-ES-01 (VLOS) i STS-ES-02 (BVLOS) segons el Reglament (UE) 2019/947. Capacitat certificada, encara sense estrenar en cap projecte: a punt per a agricultura de precisió i mapeig creuat amb GIS.</p>
+    </div>
+    <h3 class="mov rv" data-en="Water">Aigua</h3>
+    <div class="about-col">
       <p class="rv" data-en="The environmental grounding comes from that same landscape: irrigation management and water-use optimisation protocols in rice paddies, soil and water sampling for nutrient analysis, climate and environmental monitoring, and integrated pest management, all within the Albufera Natural Park.">La base ambiental ve d'eixe mateix paisatge: gestió del reg i protocols d'optimització de l'ús de l'aigua en arrossars, mostreig de sòl i aigua per a anàlisi de nutrients, monitoratge climàtic i ambiental, i gestió integrada de plagues, tot dins del Parc Natural de l'Albufera.</p>
-      <p class="rv rv-d1" data-en="My degree thesis was born there too: an experimental study of herbicide resistance (propanil and penoxsulam) in <em>Echinochloa</em> biotypes from the Albufera rice fields.">La tesi de grau també va nàixer allí: un estudi experimental de resistència a herbicides (propanil i penoxsulam) en biotips d'<em>Echinochloa</em> dels arrossars de l'Albufera.</p>
     </div>
   </div>
 </section>
@@ -477,6 +506,7 @@
               <li data-en="Witness: forced-choice peer assessment (up to 12 witnesses) with blind-spot detection between self-image and how the team sees you.">Witness: avaluació d'iguals per elecció forçada (fins a 12 testimonis) amb detecció de punts cecs entre l'autoimatge i com et veu l'equip.</li>
               <li data-en="6 languages (EN·CA·ES·FR·DE·DA), one-time Stripe payment for Full Moon, SEO pipeline on BigQuery with a custom MCP server generating articles.">6 idiomes (EN·CA·ES·FR·DE·DA), pagament únic amb Stripe per al Full Moon, i pipeline SEO sobre BigQuery amb servidor MCP propi que genera articles.</li>
               <li data-en="Listed in the official IPIP directory (ipip.ori.org) alongside the main psychometric platforms: independent external validation.">Llistada al directori oficial de l'IPIP (ipip.ori.org) al costat de les plataformes psicomètriques principals: validació externa independent.</li>
+              <li data-en="Official accreditation in the Belbin Team Roles methodology (2024) as the platform's methodological grounding, alongside the IPIP listing.">Acreditació oficial en la metodologia Belbin de Rols d'Equip (2024) com a base metodològica de la plataforma, al costat del llistat IPIP.</li>
               <li data-en="Status: live in production at cercol.team, MIT-licensed under the Cercol org; team report (Last Quarter) in planning.">Estat: en producció a cercol.team, llicència MIT sota l'organització Cercol; l'informe d'equip (Last Quarter) està en planificació.</li>
             </ul>
           </details>
@@ -621,8 +651,11 @@
       <div class="cert"><b>dbt Analytics Engineering</b><span>dbt Labs · 2026</span></div>
       <div class="cert"><b>Snowflake Core · AI · DWH</b><span>Snowflake · 2024-26</span></div>
       <div class="cert"><b>Engineers Australia · Agricultural Engineer (ANZSCO 233912)</b><span data-en="Engineering qualifications and experience assessed and recognised by an independent professional body · 2025">Qualificacions i experiència d'enginyeria avaluades i reconegudes per un organisme professional independent · 2025</span></div>
+      <div class="cert"><b data-en="Accredited Integrated Pest Management Advisor">Assessor acreditat en gestió integrada de plagues</b><span data-en="Generalitat Valenciana · ROPO advisory register · valid until 2028">Generalitat Valenciana · registre ROPO, assessorament · vàlid fins al 2028</span></div>
+      <div class="cert"><b data-en="EASA UAS Remote Pilot: Open Category A1/A3 + STS-ES-01/02 (VLOS &amp; BVLOS practical training)">Pilot UAS (EASA): categoria oberta A1/A3 i escenaris estàndard STS-ES-01/02</b><span data-en="AESA · valid until 2028">AESA · vàlid fins al 2028</span></div>
       <div class="cert"><b>Data Engineer Associate</b><span>DataCamp · 2026</span></div>
       <div class="cert"><b>Airflow 101</b><span>Astronomer · 2026</span></div>
+      <div class="cert"><b data-en="Belbin Team Roles Accredited">Acreditat en la metodologia Belbin de Rols d'Equip</b><span>Belbin Spain · 2024</span></div>
       <div class="cert"><b>AutoCAD 2D-3D</b><span>Universitat Politècnica de València · 2015</span></div>
       <div class="cert"><b data-en="Industrial Mechatronics (Higher VET) · first year">FP Superior en Mecatrònica Industrial · 1r curs</b><span>IES Joan Fuster, Sueca</span></div>
       <div class="cert"><b data-en="Bachelor in Education">Grau en Magisteri</b><span>Universitat de València · 2009</span></div>
