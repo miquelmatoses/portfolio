@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://miquelmatoses.github.io/portfolio/sitemap.xml
